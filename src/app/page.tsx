@@ -1,11 +1,5 @@
-import { DashboardView } from "@/components/dashboard/dashboard-view";
-import { Header } from "@/components/layout/header";
+import { HomeView } from "@/components/home/home-view";
 
 export default function HomePage() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <DashboardView />
-    </div>
-  );
+  return <HomeView />;
 }

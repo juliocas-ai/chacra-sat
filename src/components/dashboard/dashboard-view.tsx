@@ -16,11 +16,13 @@ import {
 import {
   AlertTriangle,
   ArrowRight,
+  ExternalLink,
+  Satellite,
   Star,
   Waves,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -36,7 +38,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
 import { HowItWorksSection } from "@/components/dashboard/how-it-works-section";
 import { useLanguage } from "@/context/language-context";
 import {
@@ -49,6 +50,7 @@ import {
   MONTHS,
   PRIOS,
   type PrioId,
+  powerUrls,
   SALTS,
   type SaltId,
   SOILS,
@@ -72,7 +74,11 @@ ChartJS.register(
   Legend
 );
 
-export function DashboardView() {
+export function DashboardView({
+  initialValley = "moche",
+}: {
+  initialValley?: ValleyId;
+}) {
   const { language, t, fmt, setIsNasaData } = useLanguage();
 
   const { clim: climStore, monthly: monthlyStore } = React.useMemo(
@@ -81,7 +87,7 @@ export function DashboardView() {
   );
 
   const [field, setField] = React.useState<FieldState>({
-    valley: "moche",
+    valley: initialValley,
     current: "maize",
     soil: "loam",
     salt: "med",
@@ -111,6 +117,18 @@ export function DashboardView() {
   React.useEffect(() => {
     setIsNasaData(C.nasa);
   }, [C.nasa, setIsNasaData]);
+
+  const nasaUrls = React.useMemo(
+    () => powerUrls(currentValley),
+    [currentValley]
+  );
+
+  const loadStatusText = React.useMemo(() => {
+    const parts: string[] = [];
+    if (climStore[field.valley]) parts.push(`${t("loadClimOk")} ✓`);
+    if (monthlyStore[field.valley]) parts.push(`${t("loadMonOk")} ✓`);
+    return parts.length ? parts.join(" · ") : t("loadNone");
+  }, [climStore, monthlyStore, field.valley, t]);
 
   const cname = React.useCallback(
     (id: CropId) => CROPS[id][language],
@@ -985,25 +1003,54 @@ export function DashboardView() {
         </CardContent>
       </Card>
 
+      {/* NASA DATA SOURCE CARD */}
+      <Card
+        id="loader"
+        className="mt-4 min-w-0 rounded-[14px] border-line bg-surface p-4 shadow-xs ring-0 sm:mt-[18px] sm:p-[18px]"
+      >
+        <CardHeader className="p-0">
+          <CardTitle className="flex items-center gap-2 font-heading text-lg font-bold text-ink">
+            <Satellite className="size-5 shrink-0 text-navy" />
+            <span>{t("load")}</span>
+          </CardTitle>
+          <CardDescription className="text-[13.5px] leading-relaxed text-muted-foreground">
+            {loadStatusText}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="p-0">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <a
+              href={nasaUrls.clim}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "h-auto gap-1.5 rounded-lg border-line bg-white px-3 py-1.5 text-[13px] font-medium text-navy hover:bg-muted"
+              )}
+            >
+              <span>{t("openClim").replace(" ↗", "")}</span>
+              <ExternalLink className="size-3.5 shrink-0 text-sky" />
+            </a>
+
+            <a
+              href={nasaUrls.monthly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "h-auto gap-1.5 rounded-lg border-line bg-white px-3 py-1.5 text-[13px] font-medium text-navy hover:bg-muted"
+              )}
+            >
+              <span>{t("openMon").replace(" ↗", "")}</span>
+              <ExternalLink className="size-3.5 shrink-0 text-sky" />
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* HOW CHACRASAT WORKS */}
       <HowItWorksSection />
-
-      {/* FOOTER */}
-      <footer className="mt-7 space-y-3 text-[12.5px] leading-relaxed text-muted-foreground">
-        <Separator className="mb-4 bg-line" />
-        <div>
-          <h3 className="mb-1 font-heading text-sm font-bold text-ink">
-            {t("srcTitle")}
-          </h3>
-          <p>{t("src")}</p>
-        </div>
-
-        <p className="pt-1 text-ink/90">
-          {t("team_prefix")}
-          <b className="font-semibold text-navy">{t("team_name")}</b>
-          {t("team_suffix")}
-        </p>
-      </footer>
     </main>
   );
 }

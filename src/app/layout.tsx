@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
 import { LanguageProvider } from "@/context/language-context";
 import { getSiteUrl, SITE_META } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -83,7 +85,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
     >
       <body className="flex min-h-full flex-col">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );

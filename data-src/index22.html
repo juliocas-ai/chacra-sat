@@ -23,16 +23,16 @@ header{background:radial-gradient(1200px 400px at 85% -40%,#2b5ea8 0%,var(--navy
 .brand h1{font-size:30px;letter-spacing:.3px}
 .brand p{margin:2px 0 0;color:#c9d8ef;font-size:14.5px}
 .hright{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.badge{font-size:12.5px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);white-space:normal;max-width:100%}
+.badge{font-size:12.5px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);white-space:nowrap}
 .badge.ok{background:rgba(47,158,91,.25);border-color:#5fd18f}
 .badge.ref{background:rgba(217,130,43,.22);border-color:#f0a95c}
-.lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden;flex-shrink:0}
+.lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden}
 .lang button{background:none;border:0;color:#fff;padding:6px 12px;cursor:pointer;font-weight:600;font-size:13px}
 .lang button.on{background:#fff;color:var(--navy)}
-main{max-width:1180px;margin:0 auto;padding:22px 18px 40px;overflow-x:hidden}
-.steps{display:grid;grid-template-columns:340px minmax(0,1fr);gap:18px}
-@media(max-width:900px){.steps{grid-template-columns:minmax(0,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+main{max-width:1180px;margin:0 auto;padding:22px 18px 40px}
+.steps{display:grid;grid-template-columns:340px 1fr;gap:18px}
+@media(max-width:900px){.steps{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
 .card h2{font-size:18px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
 .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-family:Inter}
 .sub{color:var(--muted);font-size:13.5px;margin:0 0 12px}
@@ -46,11 +46,11 @@ select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9p
 .stat{background:var(--sand);border-radius:10px;padding:10px 12px}
 .stat b{display:block;font-size:20px;font-family:"Space Grotesk"}
 .stat span{font-size:12px;color:var(--muted)}
-.chartbox{position:relative;height:260px;width:100%;min-width:0}
-.right{display:flex;flex-direction:column;gap:18px;min-width:0}
-.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media(max-width:1000px){.opts{grid-template-columns:minmax(0,1fr)}}
-.opt{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;display:flex;flex-direction:column;gap:10px;min-width:0}
+.chartbox{position:relative;height:260px}
+.right{display:flex;flex-direction:column;gap:18px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:1000px){.opts{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;display:flex;flex-direction:column;gap:10px}
 .opt.best{border:2px solid var(--leaf);box-shadow:0 4px 18px rgba(47,158,91,.12)}
 .opt .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .opt h3{font-size:16px}
@@ -77,23 +77,40 @@ select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9p
 .msg{font-size:13px;margin-top:8px}
 .msg.ok{color:var(--leaf)} .msg.err{color:var(--bad)}
 .alert{background:#fff3e6;border-left:4px solid var(--warn);padding:10px 12px;border-radius:8px;font-size:13px}
-.ninogrid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px}
-@media(max-width:900px){.ninogrid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){
-  header{padding:16px}
-  .hright{margin-left:0;width:100%;justify-content:space-between}
-  main{padding:16px 12px 32px}
-  .card{padding:14px}
-  .stat b{font-size:17px}
-  .bars{grid-template-columns:95px minmax(0,1fr) 26px}
-  input[type=file]{max-width:100%;font-size:12px}
-}
+.ninogrid{display:grid;grid-template-columns:1fr 280px;gap:16px}
+@media(max-width:900px){.ninogrid{grid-template-columns:1fr}}
 footer{max-width:1180px;margin:0 auto;padding:0 18px 40px;font-size:12.5px;color:var(--muted)}
 footer h3{font-size:14px;color:var(--ink);margin:14px 0 4px}
 .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;margin-top:6px}
 .legend span{display:flex;align-items:center;gap:4px}
 .legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
 .disclaimer{background:var(--leaf-l);border-radius:10px;padding:10px 12px;font-size:13px;margin-top:12px}
+/* ---- landing ---- */
+.home-hero{background:radial-gradient(900px 420px at 80% 0%,#2b5ea8 0%,var(--navy) 65%);color:#fff;padding:56px 24px 64px}
+.home-hero .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+@media(max-width:860px){.home-hero .in{grid-template-columns:1fr}}
+.home-kicker{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6fd39a}
+.home-hero h2{font-size:46px;line-height:1.08;margin:12px 0 14px}
+.home-hero p.lead{font-size:18px;color:#c9d8ef;margin:0 0 26px;max-width:620px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:#2f9e5b;color:#fff;border:0;border-radius:12px;padding:15px 24px;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(47,158,91,.35);font-family:Inter,sans-serif}
+.cta:hover{background:#278a4f}
+.cta.ghost{background:transparent;border:1px solid rgba(255,255,255,.4);box-shadow:none;font-weight:600;font-size:15px;padding:13px 18px;margin-left:10px}
+.home-art{width:100%;max-width:380px;justify-self:center}
+.home-sec{max-width:1180px;margin:0 auto;padding:44px 18px 0}
+.home-sec h3.t{font-size:26px;margin-bottom:6px}
+.home-sec p.s{color:var(--muted);margin:0 0 18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.g3{grid-template-columns:1fr}}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.hcard .big{font-family:"Space Grotesk";font-size:38px;font-weight:700;line-height:1;margin-bottom:8px}
+.hcard h4{font-family:"Space Grotesk";font-size:18px;margin:0 0 6px}
+.hcard p{margin:0;font-size:14.5px;color:#3a4553}
+.hcard .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--leaf);color:#fff;font-weight:700;margin-bottom:10px}
+.home-cta{text-align:center;padding:44px 18px 56px}
+.home-cta p{color:var(--muted);margin:10px 0 0;font-size:13px}
+.backlink{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600}
+.src-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;font-size:13.5px}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -116,12 +133,72 @@ footer h3{font-size:14px;color:var(--ink);margin:14px 0 4px}
       <p data-i18n="tagline">From orbit to the chacra: smarter crop rotations for Peru's northern coast</p>
     </div>
     <div class="hright">
+      <button class="backlink" id="toHome" data-i18n="home">← Home</button>
       <span id="dataBadge" class="badge ref">…</span>
       <div class="lang"><button id="lang-en" class="on">EN</button><button id="lang-es">ES</button></div>
     </div>
   </div>
 </header>
 
+<div id="homeView">
+  <section class="home-hero">
+    <div class="in">
+      <div>
+        <div class="home-kicker" data-i18n="hKicker">NASA Space Apps Challenge 2026 · Field Shift</div>
+        <h2 data-i18n="hTitle">Satellite data to decide what to plant next</h2>
+        <p class="lead" data-i18n="hLead">ChacraSat helps farmers on Peru's desert northern coast choose crop rotations that save water, rebuild soil and resist El Niño — using real NASA Earth observations.</p>
+        <button class="cta" data-go="planner"><span data-i18n="hCta">Open the rotation planner</span> →</button>
+        <button class="cta ghost" data-go="how" data-i18n="hHow">How it works ↓</button>
+      </div>
+      <svg class="home-art" viewBox="0 0 620 620" aria-hidden="true">
+        <circle cx="310" cy="310" r="300" fill="#13305c"/>
+        <ellipse cx="310" cy="330" rx="270" ry="96" fill="none" stroke="#3fa7ff" stroke-width="4" stroke-dasharray="10 10" transform="rotate(-16 310 330)"/>
+        <path d="M40 440 Q310 360 580 440 L580 560 Q310 640 40 560Z" fill="#2f9e5b"/>
+        <path d="M70 470 Q310 400 550 470" stroke="#a0662f" stroke-width="6" fill="none"/>
+        <path d="M80 505 Q310 438 540 505" stroke="#a0662f" stroke-width="6" fill="none"/>
+        <path d="M95 540 Q310 476 525 540" stroke="#a0662f" stroke-width="6" fill="none"/>
+        <g transform="translate(420 150) rotate(24)"><rect x="-26" y="-26" width="52" height="52" rx="8" fill="#eef2f8"/><rect x="-110" y="-20" width="70" height="40" fill="#3fa7ff"/><rect x="40" y="-20" width="70" height="40" fill="#3fa7ff"/></g>
+        <path d="M400 190 L300 430" stroke="#ffd166" stroke-width="5" stroke-dasharray="12 10"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="home-sec">
+    <h3 class="t" data-i18n="hProbT">What NASA data shows around Trujillo</h3>
+    <p class="s" data-i18n="hProbS">Real values from the NASA POWER record for the coastal valleys of La Libertad.</p>
+    <div class="g3">
+      <div class="hcard"><div class="big" style="color:#1f6fbf" id="hStat1">–</div><h4 data-i18n="hS1t">Almost no rain</h4><p data-i18n="hS1p">Share of yearly crop water demand covered by rain. Every crop depends on irrigation.</p></div>
+      <div class="hcard"><div class="big" style="color:#a85b12" id="hStat2">–</div><h4 data-i18n="hS2t">El Niño shocks</h4><p id="hS2p"></p></div>
+      <div class="hcard"><div class="big" style="color:#c94a3c" id="hStat3">–</div><h4 data-i18n="hS3t">Heat waves</h4><p data-i18n="hS3p">Warmest monthly temperature anomaly in 2010–2024, used to stress-test every rotation.</p></div>
+    </div>
+  </section>
+
+  <section class="home-sec" id="how">
+    <h3 class="t" data-i18n="hHowT">How it works</h3>
+    <p class="s" data-i18n="hHowS">Three simple steps. ChacraSat suggests — the farmer decides.</p>
+    <div class="g3">
+      <div class="hcard"><div class="n">1</div><h4 data-i18n="hW1t">Describe your field</h4><p data-i18n="hW1p">Valley, current crop, soil, salinity, irrigation water and what matters most to you.</p></div>
+      <div class="hcard"><div class="n">2</div><h4 data-i18n="hW2t">See what NASA sees</h4><p data-i18n="hW2p">Temperature, rain and soil wetness from NASA POWER, turned into monthly crop water demand (FAO-56).</p></div>
+      <div class="hcard"><div class="n">3</div><h4 data-i18n="hW3t">Compare 3 rotations</h4><p data-i18n="hW3p">The best 18-month plans with five scores — soil, water, salinity, El Niño, income — and plain reasons.</p></div>
+    </div>
+  </section>
+
+  <section class="home-sec">
+    <h3 class="t" data-i18n="hWhoT">Who it is for</h3>
+    <div class="g3">
+      <div class="hcard"><h4 data-i18n="hU1t">Farmers</h4><p data-i18n="hU1p">Small and medium growers in the Moche, Virú, Chao, Chicama and Jequetepeque valleys.</p></div>
+      <div class="hcard"><h4 data-i18n="hU2t">Agronomists</h4><p data-i18n="hU2p">Technicians and local agricultural agencies who advise farmers each season.</p></div>
+      <div class="hcard"><h4 data-i18n="hU3t">Irrigation boards</h4><p data-i18n="hU3p">Water user associations planning how to share scarce canal water.</p></div>
+    </div>
+  </section>
+
+  <section class="home-cta">
+    <button class="cta" data-go="planner"><span data-i18n="hCta">Open the rotation planner</span> →</button>
+    <p data-i18n="hFoot">Team Trujillo Orbital · Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo · Data: NASA POWER</p>
+  </section>
+</div>
+
+<div id="plannerView" hidden>
 <main>
   <div class="steps">
     <!-- STEP 1 -->
@@ -182,22 +259,14 @@ footer h3{font-size:14px;color:var(--ink);margin:14px 0 4px}
     </div>
   </section>
 
-  <!-- DATA LOADER -->
-  <section class="card loader" style="margin-top:18px" id="loader">
+  <!-- DATA SOURCE -->
+  <section class="card" style="margin-top:18px" id="loader">
     <h2>🛰️ <span data-i18n="load">NASA data</span></h2>
     <p class="sub" id="loadStatus"></p>
-    <div class="row">
-      <button class="btn" id="btnFetch" data-i18n="fetch">Download NASA data now</button>
-      <a id="linkClim" target="_blank" rel="noopener" class="note" data-i18n="openClim">Open NASA POWER climate link</a>
-      <a id="linkMon" target="_blank" rel="noopener" class="note" data-i18n="openMon">Open NASA POWER monthly history link</a>
+    <div class="src-row">
+      <a id="linkClim" target="_blank" rel="noopener" data-i18n="openClim">View raw NASA POWER climate data</a>
+      <a id="linkMon" target="_blank" rel="noopener" data-i18n="openMon">View raw NASA POWER monthly record</a>
     </div>
-    <p class="note" data-i18n="pasteHelp">If automatic download is blocked, open the links above, copy all the text (or save it as a file) and paste or upload it here:</p>
-    <textarea id="paste" placeholder='{"type":"Feature", ... "properties":{"parameter":{...}}}'></textarea>
-    <div class="row">
-      <button class="btn ghost" id="btnPaste" data-i18n="usePaste">Use pasted data</button>
-      <input type="file" id="file" accept=".json,application/json" multiple>
-    </div>
-    <div class="msg" id="loadMsg"></div>
   </section>
 </main>
 
@@ -208,6 +277,7 @@ footer h3{font-size:14px;color:var(--ink);margin:14px 0 4px}
   <p id="srcText"></p>
   <p data-i18n="team"></p>
 </footer>
+</div>
 
 <script>
 /* ===================== DATA ===================== */
@@ -323,7 +393,23 @@ const DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 /* ===================== I18N ===================== */
 const T = {
- en:{tagline:"From orbit to the chacra: smarter crop rotations for Peru's northern coast",
+ en:{home:"← Home",
+  hKicker:"NASA Space Apps Challenge 2026 · Field Shift", hTitle:"Satellite data to decide what to plant next",
+  hLead:"ChacraSat helps farmers on Peru's desert northern coast choose crop rotations that save water, rebuild soil and resist El Niño — using real NASA Earth observations.",
+  hCta:"Open the rotation planner", hHow:"How it works ↓",
+  hProbT:"What NASA data shows around Trujillo", hProbS:"Real values from the NASA POWER record for the coastal valleys of La Libertad.",
+  hS1t:"Almost no rain", hS1p:"Share of yearly crop water demand covered by rain. Every crop depends on irrigation.",
+  hS2t:"El Niño shocks", hS2p:n=>`Rain in March 2017, during the coastal El Niño, vs. about ${n} mm in a normal March.`,
+  hS3t:"Heat waves", hS3p:"Warmest monthly temperature anomaly in 2010–2024, used to stress-test every rotation.",
+  hHowT:"How it works", hHowS:"Three simple steps. ChacraSat suggests — the farmer decides.",
+  hW1t:"Describe your field", hW1p:"Valley, current crop, soil, salinity, irrigation water and what matters most to you.",
+  hW2t:"See what NASA sees", hW2p:"Temperature, rain and soil wetness from NASA POWER, turned into monthly crop water demand (FAO-56).",
+  hW3t:"Compare 3 rotations", hW3p:"The best 18-month plans with five scores — soil, water, salinity, El Niño, income — and plain reasons.",
+  hWhoT:"Who it is for", hU1t:"Farmers", hU1p:"Small and medium growers in the Moche, Virú, Chao, Chicama and Jequetepeque valleys.",
+  hU2t:"Agronomists", hU2p:"Technicians and local agricultural agencies who advise farmers each season.",
+  hU3t:"Irrigation boards", hU3p:"Water user associations planning how to share scarce canal water.",
+  hFoot:"Team Trujillo Orbital · Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo · Data: NASA POWER",
+  tagline:"From orbit to the chacra: smarter crop rotations for Peru's northern coast",
   s1:"Your field", s1sub:"Tell us about your farm. Everything stays in your browser.",
   valley:"Valley (La Libertad, Peru)", current:"Current or last crop", soil:"Soil texture", salt:"Soil salinity",
   water:"Irrigation water", start:"Next planting month", priority:"What matters most to you?",
@@ -332,7 +418,7 @@ const T = {
   stTmax:"Hottest month (avg. max)", stWet:"Root-zone soil wetness",
   s3:"Rotation options for the next 18 months", s3sub:"Ranked by your priority. Each score is explained — no black boxes.",
   nino:"El Niño stress test", ninosub:"Coastal El Niño events (like 2017 and 2023) bring heat and heavy rain to Trujillo. We replay NASA's monthly record to see how big those shocks were.",
-  load:"NASA data", fetch:"Download NASA data now", openClim:"Open NASA POWER climate link", openMon:"Open NASA POWER monthly history link",
+  load:"NASA data", fetch:"Download NASA data now", openClim:"View raw NASA POWER climate data ↗", openMon:"View raw NASA POWER monthly record ↗",
   pasteHelp:"If automatic download is blocked, open the links above, copy all the text (or save it as a file) and paste or upload it here:",
   usePaste:"Use pasted data", howTitle:"How ChacraSat works", srcTitle:"Data & references",
   team:"Built during the hackathon by team <b>Trujillo Orbital</b> (Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo — Trujillo, Peru) for the 2026 NASA Space Apps Challenge — “Field Shift: Adapting Farms with NASA Data”.",
@@ -363,7 +449,23 @@ const T = {
   fetching:"Downloading from NASA POWER…", pasteErr:"That doesn't look like NASA POWER JSON. Copy the whole page text and try again.",
   how:`1) You describe your field and priorities. 2) ChacraSat reads NASA POWER satellite-based climate data for your valley (temperature, rain, solar radiation and root-zone soil wetness) and computes monthly crop water demand with the FAO-56 Hargreaves method. 3) It builds every possible 3-crop sequence from 10 crops grown on the northern coast and scores each one on five transparent criteria: soil health (legumes, cover crops, plant-family changes, roots), irrigation water need (crop coefficient × NASA-based demand minus NASA rain), salinity fit (FAO salt-tolerance thresholds), El Niño resilience (heat and heavy-rain exposure under the strongest warming seen in NASA's record) and relative income. 4) Scores are weighted by your priority, and the top 3 are shown next to “keep the same crop”. Crop values are indicative and should be validated with local agronomists.`,
   src:`NASA POWER (Prediction Of Worldwide Energy Resources) API — parameters T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derived from NASA GMAO MERRA-2/GEOS and CERES satellite products), https://power.larc.nasa.gov · FAO Irrigation & Drainage Paper 56 (Allen et al., 1998) — crop coefficients and Hargreaves ETo · FAO Irrigation & Drainage Paper 29 (Ayers & Westcot, 1985) — salt tolerance · Reference values shown before loading NASA data are approximate and are not NASA data.`},
- es:{tagline:"De la órbita a la chacra: rotaciones de cultivo más inteligentes para la costa norte del Perú",
+ es:{home:"← Inicio",
+  hKicker:"NASA Space Apps Challenge 2026 · Field Shift", hTitle:"Datos satelitales para decidir qué sembrar después",
+  hLead:"ChacraSat ayuda a los agricultores de la costa norte del Perú a elegir rotaciones de cultivo que ahorran agua, recuperan el suelo y resisten El Niño — con datos reales de observación de la Tierra de la NASA.",
+  hCta:"Abrir el planificador de rotaciones", hHow:"Cómo funciona ↓",
+  hProbT:"Lo que muestran los datos NASA en Trujillo", hProbS:"Valores reales del registro NASA POWER para los valles costeros de La Libertad.",
+  hS1t:"Casi no llueve", hS1p:"Parte de la demanda anual de agua de los cultivos que cubre la lluvia. Todo depende del riego.",
+  hS2t:"Golpes de El Niño", hS2p:n=>`Lluvia de marzo 2017, con El Niño costero, frente a unos ${n} mm en un marzo normal.`,
+  hS3t:"Olas de calor", hS3p:"Mayor anomalía mensual de temperatura en 2010–2024, usada para poner a prueba cada rotación.",
+  hHowT:"Cómo funciona", hHowS:"Tres pasos simples. ChacraSat sugiere — el agricultor decide.",
+  hW1t:"Describe tu chacra", hW1p:"Valle, cultivo actual, suelo, salinidad, agua de riego y lo que más te importa.",
+  hW2t:"Mira lo que ve la NASA", hW2p:"Temperatura, lluvia y humedad del suelo de NASA POWER, convertidas en demanda mensual de agua (FAO-56).",
+  hW3t:"Compara 3 rotaciones", hW3p:"Los mejores planes de 18 meses con cinco puntajes — suelo, agua, salinidad, El Niño, ingresos — y razones simples.",
+  hWhoT:"Para quién es", hU1t:"Agricultores", hU1p:"Pequeños y medianos productores de los valles de Moche, Virú, Chao, Chicama y Jequetepeque.",
+  hU2t:"Agrónomos", hU2p:"Técnicos y agencias agrarias que asesoran a los agricultores cada campaña.",
+  hU3t:"Juntas de riego", hU3p:"Juntas de usuarios que planifican cómo repartir el agua escasa del canal.",
+  hFoot:"Equipo Trujillo Orbital · Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo · Datos: NASA POWER",
+  tagline:"De la órbita a la chacra: rotaciones de cultivo más inteligentes para la costa norte del Perú",
   s1:"Tu chacra", s1sub:"Cuéntanos de tu campo. Todo se queda en tu navegador.",
   valley:"Valle (La Libertad, Perú)", current:"Cultivo actual o anterior", soil:"Textura del suelo", salt:"Salinidad del suelo",
   water:"Agua de riego", start:"Próximo mes de siembra", priority:"¿Qué es lo más importante para ti?",
@@ -372,7 +474,7 @@ const T = {
   stTmax:"Mes más caluroso (máx. prom.)", stWet:"Humedad del suelo (raíces)",
   s3:"Opciones de rotación para los próximos 18 meses", s3sub:"Ordenadas según tu prioridad. Cada puntaje se explica — sin cajas negras.",
   nino:"Prueba de estrés El Niño", ninosub:"El Niño costero (como en 2017 y 2023) trae calor y lluvias fuertes a Trujillo. Repasamos el registro mensual de la NASA para medir esos golpes.",
-  load:"Datos NASA", fetch:"Descargar datos NASA ahora", openClim:"Abrir link de clima NASA POWER", openMon:"Abrir link de historia mensual NASA POWER",
+  load:"Datos NASA", fetch:"Descargar datos NASA ahora", openClim:"Ver datos crudos de clima NASA POWER ↗", openMon:"Ver registro mensual crudo NASA POWER ↗",
   pasteHelp:"Si la descarga automática está bloqueada, abre los links, copia todo el texto (o guárdalo como archivo) y pégalo o súbelo aquí:",
   usePaste:"Usar datos pegados", howTitle:"Cómo funciona ChacraSat", srcTitle:"Datos y referencias",
   team:"Hecho durante el hackatón por el equipo <b>Trujillo Orbital</b> (Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo — Trujillo, Perú) para el NASA Space Apps Challenge 2026 — “Field Shift: Adapting Farms with NASA Data”.",
@@ -473,7 +575,7 @@ async function fetchNasa(){
   else setMsg((S.clim[S.valley]?t("loadClimOk")+" ✓  ":"")+(S.monthly[S.valley]?t("loadMonOk")+" ✓":""),"ok");
   render();
 }
-function setMsg(m,c){const el=document.getElementById("loadMsg"); el.textContent=m; el.className="msg "+c;}
+function setMsg(m,c){const el=document.getElementById("loadMsg"); if(!el) return; el.textContent=m; el.className="msg "+c;}
 
 /* ===================== SCIENCE ===================== */
 // FAO-56 extraterrestrial radiation (MJ m-2 day-1) at mid-month
@@ -703,23 +805,11 @@ function drawNino(n){
 }
 
 /* ===================== EVENTS ===================== */
-document.getElementById("valley").onchange=e=>{S.valley=e.target.value; render(); if(!S.clim[S.valley]) fetchNasa();};
+document.getElementById("valley").onchange=e=>{S.valley=e.target.value; render();};
 document.getElementById("current").onchange=e=>{S.current=e.target.value; render();};
 document.getElementById("start").onchange=e=>{S.start=+e.target.value; render();};
-document.getElementById("lang-en").onclick=()=>{S.lang="en";setMsg("","");document.getElementById("lang-en").className="on";document.getElementById("lang-es").className="";render();};
-document.getElementById("lang-es").onclick=()=>{S.lang="es";setMsg("","");document.getElementById("lang-es").className="on";document.getElementById("lang-en").className="";render();};
-document.getElementById("btnFetch").onclick=fetchNasa;
-document.getElementById("btnPaste").onclick=()=>{
-  const txt=document.getElementById("paste").value.trim();
-  try{ const k=acceptPower(JSON.parse(txt)); setMsg(k==="clim"?t("loadClimOk")+" ✓":t("loadMonOk")+" ✓","ok"); document.getElementById("paste").value=""; render(); }
-  catch(e){ setMsg(t("pasteErr"),"err"); }
-};
-document.getElementById("file").onchange=async e=>{
-  const done=[];
-  for(const f of e.target.files){ try{ done.push(acceptPower(JSON.parse(await f.text()))); }catch(err){ setMsg(t("pasteErr"),"err"); } }
-  if(done.length){ setMsg(done.map(k=>k==="clim"?t("loadClimOk"):t("loadMonOk")).join(" ✓ · ")+" ✓","ok"); render(); }
-};
-
+document.getElementById("lang-en").onclick=()=>{S.lang="en";setMsg("","");document.getElementById("lang-en").className="on";document.getElementById("lang-es").className="";render();renderHome();};
+document.getElementById("lang-es").onclick=()=>{S.lang="es";setMsg("","");document.getElementById("lang-es").className="on";document.getElementById("lang-en").className="";render();renderHome();};
 /* ===================== INIT ===================== */
 function loadEmbed(){
   if(!EMBED || !EMBED.clim) return;
@@ -735,11 +825,40 @@ function loadEmbed(){
   }
 }
 
+function renderHome(){
+  const c=S.clim.moche; if(!c) return;
+  const lat=-8.11; let rain=0, eto=0;
+  c.T2M.forEach((tm,i)=>{ rain+=c.RAIN[i]; eto+=0.0023*(tm+17.8)*Math.sqrt(Math.max(c.T2M_MAX[i]-c.T2M_MIN[i],0))*Ra(lat,i)*0.408*DAYS[i]; });
+  document.getElementById("hStat1").textContent = "~"+Math.round(100*rain/eto)+"%";
+  const sv=S.valley; S.valley="moche"; const n=ninoDelta(); S.valley=sv;
+  if(n.real){
+    document.getElementById("hStat2").textContent = Math.round(n.r17)+" mm";
+    document.getElementById("hS2p").textContent = t("hS2p")(Math.round(n.marN));
+    document.getElementById("hStat3").textContent = "+"+n.d+" °C";
+  }
+}
+function route(){
+  const plan = location.hash==="#planner";
+  document.getElementById("homeView").hidden = plan;
+  document.getElementById("plannerView").hidden = !plan;
+  document.getElementById("toHome").hidden = !plan;
+  document.getElementById("dataBadge").hidden = !plan;
+  render(); renderHome();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{
+  if(b.dataset.go==="planner"){ location.hash="planner"; }
+  else document.getElementById(b.dataset.go).scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("toHome").onclick=()=>{ history.pushState("", document.title, location.pathname); route(); };
+document.querySelector(".brand").style.cursor="pointer";
+document.querySelector(".brand").onclick=()=>{ history.pushState("", document.title, location.pathname); route(); };
+window.addEventListener("hashchange", route);
+
 (function init(){
   const now=new Date(); S.start=(now.getMonth()+1)%12;
   loadEmbed();
-  render();
-  if(!S.clim[S.valley]) fetchNasa();
+  route();
 })();
 </script>
 </body>
