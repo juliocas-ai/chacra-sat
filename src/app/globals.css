@@ -134,7 +134,7 @@
     @apply scroll-smooth font-sans;
   }
   body {
-    @apply min-w-[320px] bg-background text-[14px] leading-[1.5] text-foreground;
+    @apply min-w-[320px] overflow-x-clip bg-background text-[14px] leading-[1.5] text-foreground antialiased;
   }
   h1,
   h2,

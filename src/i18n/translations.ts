@@ -121,19 +121,9 @@ export const translations = {
       "Las recomendaciones de ChacraSat se basan en criterios transparentes de evaluación y en los datos ingresados para orientar la planificación agrícola; no garantizan rendimientos ni resultados en campo.",
 
     // Footer & References
-    howTitle: "Cómo funciona ChacraSat",
-    how: "1) Describes tu chacra y tus prioridades. 2) ChacraSat lee los datos climáticos NASA POWER de tu valle (temperatura, lluvia, radiación solar y humedad del suelo en la zona de raíces) y calcula la demanda mensual de agua con el método Hargreaves de la FAO-56. 3) Arma todas las secuencias posibles de 3 cultivos con 10 cultivos de la costa norte y puntúa cada una con cinco criterios transparentes: salud del suelo (leguminosas, abonos verdes, cambio de familia, raíces), agua de riego (coeficiente del cultivo × demanda NASA menos lluvia NASA), tolerancia a sales (umbrales FAO), resistencia a El Niño (calor y lluvia fuerte con el mayor calentamiento del registro NASA) e ingreso relativo. 4) Los puntajes se ponderan según tu prioridad y se muestran las 3 mejores junto a “seguir con el mismo cultivo”. Los valores de cultivos son indicativos y deben validarse con agrónomos locales.",
-    srcTitle: "Datos y referencias",
-    src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parámetros T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derivados de productos NASA GMAO MERRA-2/GEOS y CERES), https://power.larc.nasa.gov · FAO Riego y Drenaje 56 (Allen et al., 1998) — coeficientes de cultivo y ETo Hargreaves · FAO Riego y Drenaje 29 (Ayers y Westcot, 1985) — tolerancia a sales · Los valores de referencia mostrados antes de cargar datos NASA son aproximados y no son datos NASA.",
-    team_prefix: "Hecho durante el hackatón por el equipo ",
-    team_name: "Trujillo Orbital",
-    team_suffix:
-      " (Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo — Trujillo, Perú) para el NASA Space Apps Challenge 2026 — “Field Shift: Adapting Farms with NASA Data”.",
     footerNavTitle: "Explorar plataforma",
     footerValleysTitle: "Valles de La Libertad",
     footerSourcesTitle: "Fuentes científicas y APIs",
-    footerPrivacy:
-      "100% procesamiento local en tu navegador · Sin rastreo · Datos abiertos NASA POWER",
 
     // Chart & Score Labels
     tmax: "Temp. máx (°C)",
@@ -295,19 +285,9 @@ export const translations = {
       "ChacraSat recommendations are based on transparent evaluation criteria and your selected inputs to support agricultural planning; they do not guarantee field yields or outcomes.",
 
     // Footer & References
-    howTitle: "How ChacraSat works",
-    how: "1) You describe your field and priorities. 2) ChacraSat reads NASA POWER satellite-based climate data for your valley (temperature, rain, solar radiation and root-zone soil wetness) and computes monthly crop water demand with the FAO-56 Hargreaves method. 3) It builds every possible 3-crop sequence from 10 crops grown on the northern coast and scores each one on five transparent criteria: soil health (legumes, cover crops, plant-family changes, roots), irrigation water need (crop coefficient × NASA-based demand minus NASA rain), salinity fit (FAO salt-tolerance thresholds), El Niño resilience (heat and heavy-rain exposure under the strongest warming seen in NASA's record) and relative income. 4) Scores are weighted by your priority, and the top 3 are shown next to “keep the same crop”. Crop values are indicative and should be validated with local agronomists.",
-    srcTitle: "Data & references",
-    src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parameters T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derived from NASA GMAO MERRA-2/GEOS and CERES satellite products), https://power.larc.nasa.gov · FAO Irrigation & Drainage Paper 56 (Allen et al., 1998) — crop coefficients and Hargreaves ETo · FAO Irrigation & Drainage Paper 29 (Ayers & Westcot, 1985) — salt tolerance · Reference values shown before loading NASA data are approximate and are not NASA data.",
-    team_prefix: "Built during the hackathon by team ",
-    team_name: "Trujillo Orbital",
-    team_suffix:
-      " (Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo — Trujillo, Peru) for the 2026 NASA Space Apps Challenge — “Field Shift: Adapting Farms with NASA Data”.",
     footerNavTitle: "Explore platform",
     footerValleysTitle: "La Libertad Valleys",
     footerSourcesTitle: "Scientific sources & APIs",
-    footerPrivacy:
-      "100% local in-browser processing · Zero tracking · NASA POWER Open Data",
 
     // Chart & Score Labels
     tmax: "Max temp (°C)",

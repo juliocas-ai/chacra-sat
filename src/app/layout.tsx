@@ -77,6 +77,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
+      data-scroll-behavior="smooth"
       className={cn(
         "h-full antialiased",
         inter.variable,

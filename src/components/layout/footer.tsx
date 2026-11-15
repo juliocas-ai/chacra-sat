@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ArrowUpRight,
-  MapPin,
-  ShieldCheck,
-  Sprout,
-} from "lucide-react";
+import { ArrowUpRight, MapPin, Sprout } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -36,7 +31,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto border-t border-line bg-white text-muted-foreground">
-      <div className="mx-auto max-w-[1180px] px-4 pt-10 pb-8 sm:px-6 sm:pt-12 sm:pb-10">
+      <div className="mx-auto max-w-[1260px] px-4 pt-10 pb-8 sm:px-6 sm:pt-12 sm:pb-9">
         {/* Top 4-Column Grid */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.85fr_1fr_1.15fr]">
           {/* Col 1: Brand & Mission */}
@@ -94,10 +89,10 @@ export function Footer() {
             <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
               <Badge
                 variant="secondary"
-                className="rounded-md bg-leaf-light px-2.5 py-0.5 text-[11px] font-semibold text-leaf"
+                className="h-auto rounded-md bg-leaf-light px-2.5 py-1 text-[11px] leading-tight font-semibold whitespace-normal text-leaf"
               >
-                <Sprout className="mr-1 size-3" />
-                {t("hKicker")}
+                <Sprout className="mr-1 size-3 shrink-0" />
+                <span>{t("hKicker")}</span>
               </Badge>
             </div>
           </div>
@@ -107,11 +102,11 @@ export function Footer() {
             <h3 className="mb-3 font-heading text-xs font-bold tracking-wider text-navy uppercase">
               {t("footerNavTitle")}
             </h3>
-            <ul className="space-y-2 text-[13px]">
+            <ul className="space-y-2.5 text-[13px]">
               <li>
                 <Link
                   href="/"
-                  className="text-muted-foreground transition-colors hover:text-navy hover:underline"
+                  className="inline-block py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                 >
                   {t("navHome")}
                 </Link>
@@ -119,7 +114,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/planner"
-                  className="font-semibold text-leaf transition-colors hover:text-navy hover:underline"
+                  className="inline-block py-0.5 font-semibold text-leaf transition-colors hover:text-navy hover:underline"
                 >
                   {t("hCta")} →
                 </Link>
@@ -127,7 +122,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#how"
-                  className="text-muted-foreground transition-colors hover:text-navy hover:underline"
+                  className="inline-block py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                 >
                   {t("hHowT")}
                 </Link>
@@ -135,7 +130,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/metodologia"
-                  className="text-muted-foreground transition-colors hover:text-navy hover:underline"
+                  className="inline-block py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                 >
                   {t("navMethodology")} &amp; FAO-56
                 </Link>
@@ -143,7 +138,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/acerca"
-                  className="text-muted-foreground transition-colors hover:text-navy hover:underline"
+                  className="inline-block py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                 >
                   {t("navAbout")} · Trujillo Orbital
                 </Link>
@@ -156,12 +151,12 @@ export function Footer() {
             <h3 className="mb-3 font-heading text-xs font-bold tracking-wider text-navy uppercase">
               {t("footerValleysTitle")}
             </h3>
-            <ul className="space-y-2 text-[13px]">
+            <ul className="space-y-2.5 text-[13px]">
               {VALLEYS.map((v) => (
                 <li key={v.id}>
                   <Link
                     href={`/planner?valley=${v.id}`}
-                    className="inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
+                    className="inline-flex items-center gap-1.5 py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                   >
                     <MapPin className="size-3.5 shrink-0 text-soil" />
                     <span>{v[language]}</span>
@@ -176,17 +171,17 @@ export function Footer() {
             <h3 className="mb-3 font-heading text-xs font-bold tracking-wider text-navy uppercase">
               {t("footerSourcesTitle")}
             </h3>
-            <ul className="space-y-2 text-[13px]">
+            <ul className="space-y-2.5 text-[13px]">
               {EXTERNAL_SOURCES.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-navy hover:underline"
+                    className="inline-flex items-start gap-1 py-0.5 text-muted-foreground transition-colors hover:text-navy hover:underline"
                   >
                     <span>{item.label}</span>
-                    <ArrowUpRight className="size-3.5 shrink-0 text-sky" />
+                    <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-sky" />
                   </a>
                 </li>
               ))}
@@ -194,38 +189,11 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="my-7 bg-line" />
-
-        {/* Methodology & Data Transparency Reference Block (from index22.html) */}
-        <div className="grid grid-cols-1 gap-5 rounded-xl border border-line bg-[#f8fafc] p-4 text-[12.5px] leading-relaxed lg:grid-cols-2 sm:p-5">
-          <div>
-            <h3 className="mb-1.5 font-heading text-[13.5px] font-bold text-ink">
-              {t("howTitle")}
-            </h3>
-            <p className="text-muted-foreground">{t("how")}</p>
-          </div>
-          <div>
-            <h3 className="mb-1.5 font-heading text-[13.5px] font-bold text-ink">
-              {t("srcTitle")}
-            </h3>
-            <p className="text-muted-foreground">{t("src")}</p>
-          </div>
-        </div>
-
         <Separator className="my-6 bg-line" />
 
-        {/* Bottom Attribution & Privacy Bar */}
-        <div className="flex flex-col items-start justify-between gap-3 text-[12.5px] md:flex-row md:items-center">
-          <p className="text-ink/90">
-            {t("team_prefix")}
-            <b className="font-semibold text-navy">{t("team_name")}</b>
-            {t("team_suffix")}
-          </p>
-
-          <div className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-leaf-light/70 px-3 py-1 text-xs font-medium text-navy">
-            <ShieldCheck className="size-3.5 shrink-0 text-leaf" />
-            <span>{t("footerPrivacy")}</span>
-          </div>
+        <div className="flex flex-col items-start justify-between gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center">
+          <p>{t("hFoot")}</p>
+          <p className="font-medium text-navy/80">La Libertad, Perú · Open Agroclimatic Data</p>
         </div>
       </div>
     </footer>

@@ -78,15 +78,15 @@ export function AboutView() {
   ];
 
   return (
-    <main className="mx-auto flex w-full max-w-[1180px] flex-col gap-8 px-4 py-8 sm:px-6 sm:py-11">
+    <main className="mx-auto flex w-full max-w-[1260px] flex-col gap-7 px-4 py-7 sm:gap-8 sm:px-6 sm:py-11">
       {/* Hero Card */}
-      <div className="rounded-2xl bg-gradient-to-br from-navy via-navy-light to-navy p-6 text-white sm:p-9">
+      <div className="rounded-2xl bg-gradient-to-br from-navy via-navy-light to-navy p-5 text-white shadow-sm sm:p-9">
         <Badge
           variant="outline"
-          className="mb-3 border-[#6fd39a]/40 bg-[#2f9e5b]/20 text-xs font-bold tracking-wider text-[#6fd39a] uppercase"
+          className="mb-3 h-auto rounded-full border-[#6fd39a]/40 bg-[#2f9e5b]/20 px-3 py-1 text-left text-xs leading-tight font-bold tracking-wider whitespace-normal text-[#6fd39a] uppercase"
         >
-          <Award className="mr-1.5 size-3.5" />
-          {t("hKicker")}
+          <Award className="mr-1.5 size-3.5 shrink-0" />
+          <span>{t("hKicker")}</span>
         </Badge>
 
         <h1 className="font-heading text-2xl font-bold sm:text-4xl">
@@ -101,24 +101,24 @@ export function AboutView() {
             : "Built in Trujillo, Peru, for the 2026 NASA Space Apps Challenge (“Field Shift: Adapting Farms with NASA Data”). Our goal is to put NASA satellite climate records directly into the hands of farmers, agronomists, and irrigation boards in La Libertad."}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link
             href="/planner"
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
-              "h-auto gap-2 rounded-xl border-0 bg-leaf px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-[#278a4f]"
+              "h-auto min-h-11 w-full justify-center gap-2 rounded-xl border-0 bg-leaf px-5 py-3 text-center text-sm font-bold whitespace-normal text-white shadow-md hover:bg-[#278a4f] sm:w-auto"
             )}
           >
-            <Sprout className="size-4" />
+            <Sprout className="size-4 shrink-0" />
             <span>{t("hCta")}</span>
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-4 shrink-0" />
           </Link>
 
           <Link
             href="/metodologia"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "h-auto rounded-xl border-white/35 bg-transparent px-5 py-3 text-sm font-semibold text-white hover:bg-white/12 hover:text-white"
+              "h-auto min-h-11 w-full justify-center rounded-xl border-white/35 bg-transparent px-5 py-3 text-center text-sm font-semibold whitespace-normal text-white hover:bg-white/12 hover:text-white sm:w-auto"
             )}
           >
             {isEs ? "Ver metodología científica" : "View scientific methodology"}
@@ -133,10 +133,10 @@ export function AboutView() {
           return (
             <Card
               key={p.title}
-              className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0"
+              className="rounded-[14px] border-line bg-surface p-5 shadow-xs"
             >
               <CardHeader className="p-0">
-                <div className="mb-2.5 grid size-10 place-items-center rounded-xl bg-leaf-light text-leaf">
+                <div className="mb-2 grid size-10 place-items-center rounded-xl bg-leaf-light text-leaf">
                   <Icon className="size-5" />
                 </div>
                 <CardTitle className="font-heading text-lg font-bold text-ink">
@@ -154,10 +154,10 @@ export function AboutView() {
       </div>
 
       {/* Team Trujillo Orbital */}
-      <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0 sm:p-6">
+      <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs sm:p-6">
         <CardHeader className="p-0">
           <CardTitle className="flex items-center gap-2 font-heading text-xl font-bold text-ink">
-            <Users className="size-5 text-navy" />
+            <Users className="size-5 shrink-0 text-navy" />
             <span>
               {isEs ? "Equipo Trujillo Orbital" : "Team Trujillo Orbital"}
             </span>
@@ -169,7 +169,7 @@ export function AboutView() {
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="mt-4 grid grid-cols-1 gap-4 p-0 md:grid-cols-3">
+        <CardContent className="grid grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((m) => (
             <div
               key={m.name}

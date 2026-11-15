@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ArrowRight,
   GitCompareArrows,
   Info,
   type LucideIcon,
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { useLanguage } from "@/context/language-context";
 import type { TranslationKey } from "@/i18n/translations";
+import { cn } from "@/lib/utils";
 
 interface ProcessStep {
   step: number;
@@ -57,16 +57,16 @@ const PROCESS_STEPS: readonly ProcessStep[] = [
  * Four-stage visual overview of how ChacraSat turns field inputs and
  * NASA POWER climate data into transparent crop rotation recommendations.
  */
-export function HowItWorksSection() {
+export function HowItWorksSection({ className }: { className?: string }) {
   const { t } = useLanguage();
 
   return (
     <section
       id="como-funciona"
       aria-labelledby="how-it-works-heading"
-      className="mt-4 min-w-0 sm:mt-[18px]"
+      className={cn("mt-4 min-w-0 sm:mt-[18px]", className)}
     >
-      <Card className="min-w-0 rounded-[14px] border-line bg-surface p-4 shadow-xs ring-0 sm:p-[18px]">
+      <Card className="min-w-0 rounded-[14px] border-line bg-surface p-4 shadow-xs sm:p-5">
         <CardHeader className="p-0">
           <CardTitle className="font-heading text-lg font-bold text-ink">
             <h2 id="how-it-works-heading">{t("howSectionTitle")}</h2>
@@ -77,38 +77,31 @@ export function HowItWorksSection() {
         </CardHeader>
 
         <CardContent className="flex min-w-0 flex-col gap-4 p-0">
-          <ol className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 lg:gap-3.5">
-            {PROCESS_STEPS.map((item, index) => {
+          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3.5">
+            {PROCESS_STEPS.map((item) => {
               const Icon = item.icon;
-              const isLast = index === PROCESS_STEPS.length - 1;
 
               return (
                 <li
                   key={item.step}
                   className="flex min-w-0 flex-col rounded-xl border border-line bg-[#fafbfc] p-3.5 motion-safe:transition-colors hover:border-navy/25"
                 >
-                  {/* Step indicator + desktop horizontal connector */}
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className="grid size-8 shrink-0 place-items-center rounded-lg bg-leaf-light text-leaf"
-                      aria-hidden="true"
-                    >
-                      <Icon className="size-4" />
-                    </div>
-
-                    <span className="font-heading text-xs font-bold tracking-wider text-navy uppercase">
-                      {t("howStepLabel")} {item.step}
-                    </span>
-
-                    {!isLast && (
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
                       <div
-                        className="hidden flex-1 items-center gap-1 pl-1 lg:flex"
+                        className="grid size-8 shrink-0 place-items-center rounded-lg bg-leaf-light text-leaf"
                         aria-hidden="true"
                       >
-                        <span className="h-px flex-1 bg-line" />
-                        <ArrowRight className="size-3.5 shrink-0 text-muted-foreground/70" />
+                        <Icon className="size-4" />
                       </div>
-                    )}
+                      <span className="font-heading text-xs font-bold tracking-wider text-navy uppercase">
+                        {t("howStepLabel")} {item.step}
+                      </span>
+                    </div>
+
+                    <span className="inline-grid size-6 shrink-0 place-items-center rounded-full bg-navy/8 font-heading text-xs font-bold text-navy">
+                      {item.step}
+                    </span>
                   </div>
 
                   <h3 className="mt-3 font-heading text-[15px] leading-snug font-bold text-ink">
@@ -122,8 +115,8 @@ export function HowItWorksSection() {
             })}
           </ol>
 
-          {/* Decision-support transparency notice + progressive disclosure link */}
-          <div className="flex items-start gap-2.5 rounded-xl bg-sand/70 px-3.5 py-2.5 text-[12.5px] leading-relaxed text-ink">
+          {/* Decision-support transparency notice */}
+          <div className="flex items-start gap-2.5 rounded-xl border border-soil/15 bg-sand/70 px-3.5 py-2.5 text-[12.5px] leading-relaxed text-ink">
             <Info
               className="mt-0.5 size-4 shrink-0 text-navy"
               aria-hidden="true"

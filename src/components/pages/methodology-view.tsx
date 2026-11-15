@@ -88,18 +88,20 @@ export function MethodologyView() {
   ];
 
   return (
-    <main className="mx-auto flex w-full max-w-[1180px] flex-col gap-8 px-4 py-8 sm:px-6 sm:py-11">
+    <main className="mx-auto flex w-full max-w-[1260px] flex-col gap-7 px-4 py-7 sm:gap-8 sm:px-6 sm:py-11">
       {/* Header Banner */}
-      <div className="flex flex-col justify-between gap-4 rounded-2xl bg-navy p-6 text-white sm:flex-row sm:items-center sm:p-8">
+      <div className="flex flex-col justify-between gap-5 rounded-2xl bg-navy p-5 text-white shadow-sm sm:p-8 lg:flex-row lg:items-center">
         <div className="max-w-2xl">
           <Badge
             variant="outline"
-            className="mb-2.5 border-[#6fd39a]/40 bg-[#2f9e5b]/20 text-xs font-semibold text-[#6fd39a]"
+            className="mb-2.5 h-auto rounded-full border-[#6fd39a]/40 bg-[#2f9e5b]/20 px-3 py-1 text-left text-xs leading-tight font-semibold whitespace-normal text-[#6fd39a]"
           >
-            <BookOpen className="mr-1.5 size-3.5" />
-            {isEs
-              ? "Documentación Científica y Abierta"
-              : "Open Scientific Documentation"}
+            <BookOpen className="mr-1.5 size-3.5 shrink-0" />
+            <span>
+              {isEs
+                ? "Documentación Científica y Abierta"
+                : "Open Scientific Documentation"}
+            </span>
           </Badge>
           <h1 className="font-heading text-2xl font-bold sm:text-3xl">
             {isEs
@@ -117,23 +119,23 @@ export function MethodologyView() {
           href="/planner"
           className={cn(
             buttonVariants({ variant: "default", size: "lg" }),
-            "h-auto shrink-0 gap-2 rounded-xl border-0 bg-leaf px-5 py-3.5 text-sm font-bold text-white shadow-md hover:bg-[#278a4f]"
+            "h-auto min-h-11 w-full shrink-0 justify-center gap-2 rounded-xl border-0 bg-leaf px-5 py-3 text-center text-sm font-bold whitespace-normal text-white shadow-md hover:bg-[#278a4f] sm:w-auto sm:py-3.5"
           )}
         >
           <span>{t("hCta")}</span>
-          <ArrowRight className="size-4" />
+          <ArrowRight className="size-4 shrink-0" />
         </Link>
       </div>
 
       {/* 4-Step Visual Process */}
-      <HowItWorksSection />
+      <HowItWorksSection className="mt-0 sm:mt-0" />
 
       {/* NASA POWER Parameters & Scoring Criteria */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+        <Card className="rounded-[14px] border-line bg-surface p-4 shadow-xs sm:p-5">
           <CardHeader className="p-0">
             <CardTitle className="flex items-center gap-2 font-heading text-lg font-bold text-ink">
-              <Satellite className="size-5 text-sky" />
+              <Satellite className="size-5 shrink-0 text-sky" />
               <span>
                 {isEs
                   ? "Variables Satelitales NASA POWER (Comunidad AG)"
@@ -147,13 +149,13 @@ export function MethodologyView() {
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="mt-3 space-y-3 p-0">
+          <CardContent className="space-y-3 p-0">
             {NASA_PARAMS.map((p) => (
               <div
                 key={p.code}
                 className="rounded-xl border border-line bg-[#f8fafc] p-3"
               >
-                <code className="font-mono text-xs font-bold text-navy">
+                <code className="font-mono text-xs font-bold break-all text-navy">
                   {p.code}
                 </code>
                 <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
@@ -164,7 +166,7 @@ export function MethodologyView() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+        <Card className="rounded-[14px] border-line bg-surface p-4 shadow-xs sm:p-5">
           <CardHeader className="p-0">
             <CardTitle className="font-heading text-lg font-bold text-ink">
               {isEs
@@ -178,7 +180,7 @@ export function MethodologyView() {
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="mt-3 space-y-3 p-0">
+          <CardContent className="space-y-3 p-0">
             {criteria.map((c) => {
               const Icon = c.icon;
               return (
@@ -207,8 +209,8 @@ export function MethodologyView() {
         </Card>
       </div>
 
-      {/* Coastal Crop Knowledge Base Table */}
-      <Card className="overflow-hidden rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+      {/* Coastal Crop Knowledge Base (Responsive Cards on Mobile + Table on Tablet/Desktop) */}
+      <Card className="overflow-hidden rounded-[14px] border-line bg-surface p-4 shadow-xs sm:p-5">
         <CardHeader className="p-0">
           <CardTitle className="font-heading text-lg font-bold text-ink">
             {isEs
@@ -222,63 +224,120 @@ export function MethodologyView() {
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="mt-3 overflow-x-auto p-0">
-          <table className="w-full min-w-[640px] border-collapse text-left text-[13px]">
-            <thead>
-              <tr className="border-b border-line bg-[#f8fafc] text-xs font-bold tracking-wider text-navy uppercase">
-                <th className="py-2.5 pr-3 pl-3">
-                  {isEs ? "Cultivo" : "Crop"}
-                </th>
-                <th className="px-3 py-2.5">
-                  {isEs ? "Familia" : "Botanical Family"}
-                </th>
-                <th className="px-3 py-2.5">
-                  {isEs ? "Duración" : "Duration"}
-                </th>
-                <th className="px-3 py-2.5">Kc (FAO-56)</th>
-                <th className="px-3 py-2.5">
-                  {isEs ? "Umbral Salinidad (ECe)" : "Salt Threshold (ECe)"}
-                </th>
-                <th className="px-3 py-2.5">
-                  {isEs ? "Umbral Calor (Tmax)" : "Heat Limit (Tmax)"}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {CANDIDATES.map((id) => {
-                const c = CROPS[id];
-                return (
-                  <tr key={id} className="hover:bg-muted/40">
-                    <td className="py-2.5 pr-3 pl-3 font-semibold text-ink">
-                      <span className="inline-flex items-center gap-2">
-                        <i
-                          className="inline-block size-3 rounded-xs"
-                          style={{ backgroundColor: c.color }}
-                        />
-                        {c[language]}
-                      </span>
-                    </td>
-                    <td className="px-3 py-2.5 text-muted-foreground">
+        <CardContent className="p-0">
+          {/* Mobile Card List (< md) */}
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:hidden">
+            {CANDIDATES.map((id) => {
+              const c = CROPS[id];
+              return (
+                <div
+                  key={id}
+                  className="rounded-xl border border-line bg-[#f8fafc] p-3"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-2 font-heading text-sm font-bold text-ink">
+                      <i
+                        className="inline-block size-3 shrink-0 rounded-xs"
+                        style={{ backgroundColor: c.color }}
+                      />
+                      <span>{c[language]}</span>
+                    </span>
+                    <span className="rounded-md bg-white px-2 py-0.5 text-[11px] font-medium text-muted-foreground ring-1 ring-line">
                       {c.fam}
-                    </td>
-                    <td className="px-3 py-2.5">
-                      {c.m} {isEs ? "meses" : "months"}
-                    </td>
-                    <td className="px-3 py-2.5 font-mono">
-                      {c.kc?.toFixed(2)}
-                    </td>
-                    <td className="px-3 py-2.5 font-mono">{c.salt} dS/m</td>
-                    <td className="px-3 py-2.5 font-mono">{c.heat} °C</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                    </span>
+                  </div>
+                  <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
+                    <div>
+                      <span className="text-muted-foreground">
+                        {isEs ? "Duración:" : "Duration:"}{" "}
+                      </span>
+                      <b className="font-semibold text-ink">
+                        {c.m} {isEs ? "meses" : "mo"}
+                      </b>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Kc: </span>
+                      <b className="font-mono font-semibold text-ink">
+                        {c.kc?.toFixed(2)}
+                      </b>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">ECe: </span>
+                      <b className="font-mono font-semibold text-ink">
+                        {c.salt} dS/m
+                      </b>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Tmax: </span>
+                      <b className="font-mono font-semibold text-ink">
+                        {c.heat} °C
+                      </b>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop/Tablet Table (md+) */}
+          <div className="hidden overflow-x-auto md:block">
+            <table className="w-full min-w-[640px] border-collapse text-left text-[13px]">
+              <thead>
+                <tr className="border-b border-line bg-[#f8fafc] text-xs font-bold tracking-wider text-navy uppercase">
+                  <th className="py-2.5 pr-3 pl-3">
+                    {isEs ? "Cultivo" : "Crop"}
+                  </th>
+                  <th className="px-3 py-2.5">
+                    {isEs ? "Familia" : "Botanical Family"}
+                  </th>
+                  <th className="px-3 py-2.5">
+                    {isEs ? "Duración" : "Duration"}
+                  </th>
+                  <th className="px-3 py-2.5">Kc (FAO-56)</th>
+                  <th className="px-3 py-2.5">
+                    {isEs ? "Umbral Salinidad (ECe)" : "Salt Threshold (ECe)"}
+                  </th>
+                  <th className="px-3 py-2.5">
+                    {isEs ? "Umbral Calor (Tmax)" : "Heat Limit (Tmax)"}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {CANDIDATES.map((id) => {
+                  const c = CROPS[id];
+                  return (
+                    <tr key={id} className="hover:bg-muted/40">
+                      <td className="py-2.5 pr-3 pl-3 font-semibold text-ink">
+                        <span className="inline-flex items-center gap-2">
+                          <i
+                            className="inline-block size-3 rounded-xs"
+                            style={{ backgroundColor: c.color }}
+                          />
+                          {c[language]}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2.5 text-muted-foreground">
+                        {c.fam}
+                      </td>
+                      <td className="px-3 py-2.5">
+                        {c.m} {isEs ? "meses" : "months"}
+                      </td>
+                      <td className="px-3 py-2.5 font-mono">
+                        {c.kc?.toFixed(2)}
+                      </td>
+                      <td className="px-3 py-2.5 font-mono">{c.salt} dS/m</td>
+                      <td className="px-3 py-2.5 font-mono">{c.heat} °C</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </CardContent>
       </Card>
 
       {/* Covered Valleys Grid */}
-      <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+      <Card className="rounded-[14px] border-line bg-surface p-4 shadow-xs sm:p-5">
         <CardHeader className="p-0">
           <CardTitle className="font-heading text-lg font-bold text-ink">
             {isEs
@@ -292,7 +351,7 @@ export function MethodologyView() {
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="mt-3 grid grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-5">
+        <CardContent className="grid grid-cols-1 gap-3 p-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {VALLEYS.map((v) => {
             const elev = EMBED.clim[v.id]?.c?.[2];
             return (
@@ -304,10 +363,10 @@ export function MethodologyView() {
                 <div>
                   <div className="flex items-center justify-between text-xs font-semibold text-leaf">
                     <span className="inline-flex items-center gap-1">
-                      <MapPin className="size-3.5" />
+                      <MapPin className="size-3.5 shrink-0" />
                       La Libertad
                     </span>
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
                   </div>
                   <h3 className="mt-1.5 font-heading text-sm font-bold text-ink">
                     {v[language]}

@@ -29,8 +29,8 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <main className="mx-auto flex w-full max-w-[1180px] flex-1 items-center justify-center px-4 py-12 sm:px-6 sm:py-20">
-      <Card className="w-full max-w-xl rounded-2xl border-line bg-surface p-6 text-center shadow-sm ring-0 sm:p-9">
+    <main className="mx-auto flex w-full max-w-[1260px] flex-1 items-center justify-center px-4 py-10 sm:px-6 sm:py-20">
+      <Card className="w-full max-w-xl rounded-2xl border-line bg-surface p-5 text-center shadow-sm sm:p-9">
         <CardHeader className="flex flex-col items-center p-0">
           <div
             className="mb-4 grid size-16 place-items-center rounded-2xl bg-danger/10 text-danger"
@@ -41,7 +41,7 @@ export default function ErrorPage({
 
           <Badge
             variant="outline"
-            className="mb-2.5 rounded-full border-danger/30 bg-danger/10 px-3 py-0.5 text-xs font-bold tracking-wider text-danger uppercase"
+            className="mb-2.5 h-auto rounded-full border-danger/30 bg-danger/10 px-3 py-1 text-center text-xs leading-tight font-bold tracking-wider whitespace-normal text-danger uppercase"
           >
             {t("errorBadge")}
           </Badge>
@@ -55,12 +55,12 @@ export default function ErrorPage({
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="mt-6 flex flex-col justify-center gap-3 p-0 sm:flex-row">
+        <CardContent className="mt-2 flex flex-col justify-center gap-3 p-0 sm:flex-row">
           <Button
             type="button"
             size="lg"
             onClick={() => retry()}
-            className="h-auto gap-2 rounded-xl bg-navy px-5 py-3 text-[14.5px] font-semibold text-white hover:bg-navy-light"
+            className="h-auto min-h-11 w-full justify-center gap-2 rounded-xl bg-navy px-5 py-3 text-[14.5px] font-semibold whitespace-normal text-white hover:bg-navy-light sm:w-auto"
           >
             <RotateCcw className="size-4 shrink-0" />
             <span>{t("errorRetry")}</span>
@@ -70,7 +70,7 @@ export default function ErrorPage({
             href="/"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "h-auto gap-2 rounded-xl border-line bg-white px-5 py-3 text-[14.5px] font-semibold text-ink hover:bg-muted"
+              "h-auto min-h-11 w-full justify-center gap-2 rounded-xl border-line bg-white px-5 py-3 text-[14.5px] font-semibold whitespace-normal text-ink hover:bg-muted sm:w-auto"
             )}
           >
             <ArrowLeft className="size-4 shrink-0" />

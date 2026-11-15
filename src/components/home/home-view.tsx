@@ -103,28 +103,28 @@ export function HomeView() {
     <div className="flex flex-col">
       {/* HERO SECTION */}
       <section
-        className="relative overflow-hidden px-4 py-12 text-white sm:px-6 sm:py-16 lg:py-[60px]"
+        className="relative overflow-hidden px-4 py-10 text-white sm:px-6 sm:py-14 lg:py-[60px]"
         style={{
           background:
             "radial-gradient(900px 420px at 80% 0%, #2b5ea8 0%, var(--navy) 65%)",
         }}
       >
-        <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-9">
+        <div className="mx-auto grid max-w-[1260px] grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
           {/* Left Hero Copy + Quick Actions */}
-          <div className="flex flex-col items-start">
+          <div className="flex min-w-0 flex-col items-start">
             <Badge
               variant="outline"
-              className="mb-3.5 rounded-full border-[#6fd39a]/40 bg-[#2f9e5b]/20 px-3.5 py-1 text-xs font-bold tracking-[1.8px] text-[#6fd39a] uppercase"
+              className="mb-3.5 h-auto rounded-full border-[#6fd39a]/40 bg-[#2f9e5b]/20 px-3.5 py-1 text-left text-[11px] leading-tight font-bold tracking-[1.2px] whitespace-normal text-[#6fd39a] uppercase sm:text-xs sm:tracking-[1.6px]"
             >
               <Satellite className="mr-1.5 size-3.5 shrink-0" />
-              {t("hKicker")}
+              <span>{t("hKicker")}</span>
             </Badge>
 
             <h1 className="font-heading text-3xl leading-[1.08] font-bold tracking-tight text-white sm:text-4xl lg:text-[46px]">
               {t("hTitle")}
             </h1>
 
-            <p className="mt-3.5 max-w-[620px] text-base leading-relaxed text-[#c9d8ef] sm:mt-4 sm:text-[18px]">
+            <p className="mt-3.5 max-w-[620px] text-[15.5px] leading-relaxed text-[#c9d8ef] sm:mt-4 sm:text-[18px]">
               {t("hLead")}
             </p>
 
@@ -134,7 +134,7 @@ export function HomeView() {
                 href="/planner"
                 className={cn(
                   buttonVariants({ variant: "default", size: "lg" }),
-                  "h-auto w-full justify-center gap-2.5 rounded-xl border-0 bg-leaf px-6 py-4 text-base font-bold text-white shadow-[0_8px_24px_rgba(47,158,91,0.38)] transition-all hover:bg-[#278a4f] sm:w-auto sm:text-[17px]"
+                  "h-auto min-h-12 w-full justify-center gap-2.5 rounded-xl border-0 bg-leaf px-5 py-3.5 text-center text-[15.5px] font-bold whitespace-normal text-white shadow-[0_8px_24px_rgba(47,158,91,0.38)] transition-all hover:bg-[#278a4f] sm:w-auto sm:px-6 sm:py-4 sm:text-[17px]"
                 )}
               >
                 <Sprout className="size-5 shrink-0" />
@@ -146,7 +146,7 @@ export function HomeView() {
                 href="#how"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "h-auto w-full justify-center gap-2 rounded-xl border-white/40 bg-transparent px-5 py-3.5 text-[15px] font-semibold text-white hover:bg-white/12 hover:text-white sm:w-auto"
+                  "h-auto min-h-11 w-full justify-center gap-2 rounded-xl border-white/40 bg-transparent px-5 py-3 text-center text-[15px] font-semibold whitespace-normal text-white hover:bg-white/12 hover:text-white sm:w-auto sm:py-3.5"
                 )}
               >
                 <span>{t("hHow").replace(" ↓", "")}</span>
@@ -164,9 +164,9 @@ export function HomeView() {
                   <Link
                     key={v.id}
                     href={`/planner?valley=${v.id}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/8 px-3 py-1 text-xs font-medium text-white transition-colors hover:border-[#6fd39a] hover:bg-white/18"
+                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-white/20 bg-white/8 px-3 py-1 text-xs font-medium text-white transition-colors hover:border-[#6fd39a] hover:bg-white/18"
                   >
-                    <MapPin className="size-3 text-[#6fd39a]" />
+                    <MapPin className="size-3 shrink-0 text-[#6fd39a]" />
                     <span>{v[language]}</span>
                   </Link>
                 ))}
@@ -179,7 +179,7 @@ export function HomeView() {
             <svg
               viewBox="0 0 620 620"
               aria-hidden="true"
-              className="w-full max-w-[290px] drop-shadow-[0_16px_40px_rgba(0,0,0,0.28)] sm:max-w-[350px] lg:max-w-[380px]"
+              className="w-full max-w-[190px] drop-shadow-[0_16px_40px_rgba(0,0,0,0.28)] sm:max-w-[280px] lg:max-w-[370px]"
             >
               <circle cx="310" cy="310" r="300" fill="#13305c" />
               <ellipse
@@ -239,7 +239,7 @@ export function HomeView() {
       </section>
 
       {/* MAIN CONTENT SECTIONS */}
-      <main className="mx-auto flex w-full max-w-[1180px] flex-col gap-11 px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16">
+      <main className="mx-auto flex w-full max-w-[1260px] flex-col gap-10 px-4 pt-9 pb-14 sm:gap-12 sm:px-6 sm:pt-12 sm:pb-16">
         {/* SECTION 1: WHAT NASA DATA SHOWS AROUND TRUJILLO */}
         <section aria-labelledby="nasa-trujillo-heading">
           <div className="mb-4 sm:mb-5">
@@ -256,16 +256,16 @@ export function HomeView() {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Stat 1: Almost no rain */}
-            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs">
               <CardHeader className="p-0">
-                <div className="mb-2 flex items-center justify-between">
+                <div className="mb-2 flex items-center justify-between gap-2">
                   <span
-                    className="font-heading text-4xl leading-none font-bold sm:text-[38px]"
+                    className="font-heading text-4xl leading-none font-bold tabular-nums sm:text-[38px]"
                     style={{ color: "#1f6fbf" }}
                   >
                     {trujilloStats.rainShare}
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl bg-sky/12 text-[#1f6fbf]">
+                  <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-sky/12 text-[#1f6fbf]">
                     <Droplets className="size-5" />
                   </div>
                 </div>
@@ -281,16 +281,16 @@ export function HomeView() {
             </Card>
 
             {/* Stat 2: El Niño shocks */}
-            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs">
               <CardHeader className="p-0">
-                <div className="mb-2 flex items-center justify-between">
+                <div className="mb-2 flex items-center justify-between gap-2">
                   <span
-                    className="font-heading text-4xl leading-none font-bold sm:text-[38px]"
+                    className="font-heading text-4xl leading-none font-bold tabular-nums sm:text-[38px]"
                     style={{ color: "#a85b12" }}
                   >
                     {trujilloStats.mar17Rain}
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl bg-warning/15 text-[#a85b12]">
+                  <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-warning/15 text-[#a85b12]">
                     <CloudRainWind className="size-5" />
                   </div>
                 </div>
@@ -306,16 +306,16 @@ export function HomeView() {
             </Card>
 
             {/* Stat 3: Heat waves */}
-            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0">
+            <Card className="rounded-[14px] border-line bg-surface p-5 shadow-xs">
               <CardHeader className="p-0">
-                <div className="mb-2 flex items-center justify-between">
+                <div className="mb-2 flex items-center justify-between gap-2">
                   <span
-                    className="font-heading text-4xl leading-none font-bold sm:text-[38px]"
+                    className="font-heading text-4xl leading-none font-bold tabular-nums sm:text-[38px]"
                     style={{ color: "#c94a3c" }}
                   >
                     {trujilloStats.maxWarming}
                   </span>
-                  <div className="grid size-10 place-items-center rounded-xl bg-danger/12 text-danger">
+                  <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-danger/12 text-danger">
                     <Flame className="size-5" />
                   </div>
                 </div>
@@ -333,7 +333,7 @@ export function HomeView() {
         </section>
 
         {/* SECTION 2: HOW IT WORKS (#how) */}
-        <section id="how" className="scroll-mt-6" aria-labelledby="how-heading">
+        <section id="how" className="scroll-mt-20" aria-labelledby="how-heading">
           <div className="mb-4 sm:mb-5">
             <h2
               id="how-heading"
@@ -350,10 +350,10 @@ export function HomeView() {
             {howSteps.map((step) => (
               <Card
                 key={step.num}
-                className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0"
+                className="rounded-[14px] border-line bg-surface p-5 shadow-xs"
               >
                 <CardHeader className="p-0">
-                  <span className="mb-2.5 inline-grid size-[30px] place-items-center rounded-full bg-leaf font-sans text-sm font-bold text-white">
+                  <span className="mb-2 inline-grid size-[30px] place-items-center rounded-full bg-leaf font-sans text-sm font-bold text-white">
                     {step.num}
                   </span>
                   <CardTitle className="font-heading text-lg font-bold text-ink">
@@ -390,10 +390,10 @@ export function HomeView() {
               return (
                 <Card
                   key={aud.title}
-                  className="rounded-[14px] border-line bg-surface p-5 shadow-xs ring-0"
+                  className="rounded-[14px] border-line bg-surface p-5 shadow-xs"
                 >
                   <CardHeader className="p-0">
-                    <div className="mb-2.5 inline-grid size-9 place-items-center rounded-lg bg-sand text-soil">
+                    <div className="mb-2 inline-grid size-9 place-items-center rounded-lg bg-sand text-soil">
                       <Icon className="size-5" />
                     </div>
                     <CardTitle className="font-heading text-lg font-bold text-ink">
@@ -412,22 +412,22 @@ export function HomeView() {
         </section>
 
         {/* SECTION 4: BOTTOM QUICK-ACTION CTA BANNER */}
-        <Card className="overflow-hidden rounded-2xl border-leaf/30 bg-gradient-to-br from-navy via-navy-light to-navy p-6 text-center text-white shadow-md ring-0 sm:p-10">
-          <CardHeader className="mx-auto max-w-2xl p-0">
+        <Card className="overflow-hidden rounded-2xl border-leaf/30 bg-gradient-to-br from-navy via-navy-light to-navy p-6 text-center text-white shadow-md sm:p-10">
+          <CardHeader className="mx-auto w-full max-w-2xl p-0 text-center">
             <CardTitle className="font-heading text-2xl font-bold text-white sm:text-3xl">
               {t("hCtaCardTitle")}
             </CardTitle>
-            <CardDescription className="mt-2 text-[15px] leading-relaxed text-[#c9d8ef]">
+            <CardDescription className="mt-1.5 text-[15px] leading-relaxed text-[#c9d8ef]">
               {t("hCtaCardSub")}
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="mt-4 flex flex-col items-center gap-3 p-0">
+          <CardContent className="flex flex-col items-center gap-3 p-0">
             <Link
               href="/planner"
               className={cn(
                 buttonVariants({ variant: "default", size: "lg" }),
-                "h-auto gap-2.5 rounded-xl border-0 bg-leaf px-7 py-4 text-base font-bold text-white shadow-[0_8px_24px_rgba(47,158,91,0.38)] transition-all hover:bg-[#278a4f] sm:text-[17px]"
+                "h-auto min-h-12 w-full justify-center gap-2.5 rounded-xl border-0 bg-leaf px-6 py-3.5 text-center text-[15.5px] font-bold whitespace-normal text-white shadow-[0_8px_24px_rgba(47,158,91,0.38)] transition-all hover:bg-[#278a4f] sm:w-auto sm:px-7 sm:py-4 sm:text-[17px]"
               )}
             >
               <Sprout className="size-5 shrink-0" />
@@ -435,7 +435,7 @@ export function HomeView() {
               <ArrowRight className="size-5 shrink-0" />
             </Link>
 
-            <p className="mt-1 text-xs text-[#c9d8ef]/90 sm:text-[13px]">
+            <p className="mt-1 text-xs leading-relaxed text-[#c9d8ef]/90 sm:text-[13px]">
               {t("hFoot")}
             </p>
           </CardContent>
