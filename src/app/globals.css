@@ -1,26 +1,144 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+
+  /* ChacraSat Brand Tokens */
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-sky: var(--sky);
+  --color-leaf: var(--leaf);
+  --color-leaf-light: var(--leaf-light);
+  --color-soil: var(--soil);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-surface: var(--surface);
+
+  /* shadcn UI Semantic Tokens */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: light;
+
+  /* 1. ChacraSat Original Design Tokens */
+  --navy: #0b1d3a;
+  --navy-light: #13305c;
+  --sky: #3fa7ff;
+
+  --leaf: #2f9e5b;
+  --leaf-light: #e6f5ec;
+
+  --soil: #a0662f;
+  --sand: #f6efe4;
+
+  --ink: #1c2533;
+  --line: #dfe4ea;
+
+  --warning: #d9822b;
+  --danger: #c94a3c;
+
+  --surface: #ffffff;
+  --shadow-sm: 0 2px 8px rgb(11 29 58 / 6%);
+  --shadow-md: 0 8px 24px rgb(11 29 58 / 10%);
+  --container: 1180px;
+
+  /* 2. shadcn Semantic Tokens mapped to ChacraSat Palette */
+  --background: #f4f6f9;
+  --foreground: #1c2533;
+  --card: #ffffff;
+  --card-foreground: #1c2533;
+  --popover: #ffffff;
+  --popover-foreground: #1c2533;
+  --primary: #0b1d3a;
+  --primary-foreground: #ffffff;
+  --secondary: #e6f5ec;
+  --secondary-foreground: #1c2533;
+  --muted: #eef2f6;
+  --muted-foreground: #5d6878;
+  --accent: #e6f5ec;
+  --accent-foreground: #0b1d3a;
+  --destructive: #c94a3c;
+  --border: #dfe4ea;
+  --input: #dfe4ea;
+  --ring: #3fa7ff;
+
+  --chart-1: #2f9e5b;
+  --chart-2: #3fa7ff;
+  --chart-3: #a0662f;
+  --chart-4: #d9822b;
+  --chart-5: #0b1d3a;
+
+  --radius: 0.875rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c2533;
+  --sidebar-primary: #0b1d3a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e6f5ec;
+  --sidebar-accent-foreground: #0b1d3a;
+  --sidebar-border: #dfe4ea;
+  --sidebar-ring: #3fa7ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    @apply scroll-smooth font-sans;
+  }
+  body {
+    @apply min-w-[320px] bg-background text-[14px] leading-[1.5] text-foreground;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading leading-[1.2];
+  }
 }
