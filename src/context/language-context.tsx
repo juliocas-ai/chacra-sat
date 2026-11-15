@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  i18nFormatters,
   type Language,
   type TranslationKey,
   translations,
@@ -11,6 +12,9 @@ interface LanguageContextValue {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: TranslationKey) => string;
+  fmt: (typeof i18nFormatters)["es"];
+  isNasaData: boolean;
+  setIsNasaData: (val: boolean) => void;
 }
 
 const LanguageContext = React.createContext<LanguageContextValue | undefined>(
@@ -19,6 +23,7 @@ const LanguageContext = React.createContext<LanguageContextValue | undefined>(
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = React.useState<Language>("es");
+  const [isNasaData, setIsNasaData] = React.useState<boolean>(true);
 
   const setLanguage = React.useCallback((lang: Language) => {
     setLanguageState(lang);
@@ -34,8 +39,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     [language]
   );
 
+  const fmt = React.useMemo(() => i18nFormatters[language], [language]);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage, t, fmt, isNasaData, setIsNasaData }}
+    >
       {children}
     </LanguageContext.Provider>
   );

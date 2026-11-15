@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ChacraSat — From orbit to the chacra
 
-## Getting Started
+Smarter crop rotations for Peru's northern coast, powered by NASA Earth observations.
 
-First, run the development server:
+**2026 NASA Space Apps Challenge** · Challenge: *Field Shift: Adapting Farms with NASA Data*  
+**Team Trujillo Orbital** (Trujillo, Peru): Flavia Villacorta, Yesica Castillo Olivares, Julio Castillo
 
+## What it does
+ChacraSat is a free, bilingual (English/Spanish) web decision-support tool. A farmer describes their field (valley, current crop, soil texture, salinity, irrigation water, main priority). ChacraSat combines this with NASA POWER data for that valley, computes monthly crop water demand with the FAO-56 Hargreaves method, tests every 2–3 crop sequence from 10 crops of the northern coast, and shows the 3 best 18-month rotations with five transparent scores (soil health, water, salinity fit, El Niño resilience, income) and plain-language reasons, next to "keep the same crop". ChacraSat suggests; the farmer decides.
+
+## NASA data
+NASA POWER API (Agroclimatology): `T2M`, `T2M_MAX`, `T2M_MIN`, `PRECTOTCORR`, `ALLSKY_SFC_SW_DWN`, `RH2M`, `GWETROOT` (climatology) and monthly `T2M` and `PRECTOTCORR` for 2010–2024. Data retrieved on 15 November 2026 and built into the application (`src/lib/chacra-data.ts` and `data-src/index.html`); the app can also download fresh data live from https://power.larc.nasa.gov.
+
+The POWER cell over Trujillo city has a mean elevation of 1,872 m (Andes foothills), so the coastal cell (148 m) is used for the Moche and Chicama valleys.
+
+## Run it
+
+### Next.js Application (`shadcn/ui` + React 19 + Tailwind CSS v4)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Standalone HTML Version
+You can also open `data-src/index.html` directly in any browser without installation or an account.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## References
+- NASA POWER — https://power.larc.nasa.gov
+- Allen et al. (1998). FAO Irrigation and Drainage Paper 56 — crop coefficients, Hargreaves ETo.
+- Ayers & Westcot (1985). FAO Irrigation and Drainage Paper 29 — salt tolerance.
+- Chart.js (MIT license).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Crop values are indicative and should be validated with local agronomists.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Use of AI
+Built with help from AI tools for coding, data checking and English drafting. All NASA values come directly from the NASA POWER API.
