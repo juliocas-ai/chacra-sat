@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/language-context";
+import { getSiteUrl, SITE_META } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -17,13 +18,57 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ChacraSat — Smart Crop Rotation",
-  description:
-    "ChacraSat: planificación inteligente de rotaciones de cultivos para la costa norte del Perú.",
+  metadataBase: getSiteUrl(),
+  title: {
+    default: SITE_META.defaultTitle,
+    template: `%s | ${SITE_META.name}`,
+  },
+  description: SITE_META.description,
+  applicationName: SITE_META.name,
+  keywords: [...SITE_META.keywords],
+  authors: [...SITE_META.authors],
+  creator: SITE_META.creator,
+  publisher: SITE_META.publisher,
+  category: "agriculture",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_PE",
+    alternateLocale: ["en_US"],
+    siteName: SITE_META.name,
+    title: SITE_META.shortTitle,
+    description: SITE_META.description,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_META.shortTitle,
+    description: SITE_META.description,
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_META.name,
+    statusBarStyle: "black-translucent",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#0b1d3a",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
