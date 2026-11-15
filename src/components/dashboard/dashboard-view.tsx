@@ -16,7 +16,6 @@ import {
 import {
   AlertTriangle,
   ArrowRight,
-  Sprout,
   Star,
   Waves,
 } from "lucide-react";
@@ -38,6 +37,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { HowItWorksSection } from "@/components/dashboard/how-it-works-section";
 import { useLanguage } from "@/context/language-context";
 import {
   CROPS,
@@ -985,17 +985,12 @@ export function DashboardView() {
         </CardContent>
       </Card>
 
+      {/* HOW CHACRASAT WORKS */}
+      <HowItWorksSection />
+
       {/* FOOTER */}
       <footer className="mt-7 space-y-3 text-[12.5px] leading-relaxed text-muted-foreground">
         <Separator className="mb-4 bg-line" />
-        <div>
-          <h3 className="mb-1 flex items-center gap-1.5 font-heading text-sm font-bold text-ink">
-            <Sprout className="size-4 text-leaf" />
-            <span>{t("howTitle")}</span>
-          </h3>
-          <p>{t("how")}</p>
-        </div>
-
         <div>
           <h3 className="mb-1 font-heading text-sm font-bold text-ink">
             {t("srcTitle")}

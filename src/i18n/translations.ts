@@ -40,7 +40,25 @@ export const translations = {
     nino: "Prueba de estrés El Niño",
     ninosub:
       "El Niño costero (como en 2017 y 2023) trae calor y lluvias fuertes a Trujillo. Repasamos el registro mensual de la NASA para medir esos golpes.",
-    howTitle: "Cómo funciona ChacraSat",
+    howSectionTitle: "¿Cómo funciona ChacraSat?",
+    howSectionSubtitle:
+      "Del registro de tu parcela al análisis climático con datos NASA POWER, en cuatro etapas transparentes para planificar los próximos 18 meses.",
+    howStepLabel: "Paso",
+    howStep1Title: "Configura tu chacra",
+    howStep1Desc:
+      "Indica tu valle de La Libertad, cultivo actual o anterior, textura y salinidad del suelo, agua de riego, mes de siembra y prioridad.",
+    howStep2Title: "Analiza clima y agua NASA",
+    howStep2Desc:
+      "Lee datos mensuales NASA POWER de temperatura, lluvia, radiación y humedad en raíces, calcula la demanda ETo y revisa el historial El Niño.",
+    howStep3Title: "Evalúa secuencias de cultivo",
+    howStep3Desc:
+      "Combina 10 cultivos de la costa norte en rotaciones compatibles con tu suelo y agua, y puntúa cinco criterios según tu prioridad.",
+    howStep4Title: "Compara resultados y decide",
+    howStep4Desc:
+      "Muestra las 3 mejores opciones con su línea de tiempo a 18 meses, barras de puntaje y razones claras frente a seguir con el mismo cultivo.",
+    howDisclaimerLabel: "Apoyo a la decisión:",
+    howDisclaimerText:
+      "Las recomendaciones de ChacraSat se basan en criterios transparentes de evaluación y en los datos ingresados para orientar la planificación agrícola; no garantizan rendimientos ni resultados en campo.",
     srcTitle: "Datos y referencias",
     team_prefix: "Hecho durante el hackatón por el equipo ",
     team_name: "Trujillo Orbital",
@@ -70,7 +88,6 @@ export const translations = {
       "Historia mensual 2010–2024 no disponible para este valle; la prueba usa un escenario de +2 °C.",
     rainSeries: "Lluvia mensual (mm)",
     tAnom: "Anomalía de temperatura (°C)",
-    how: "1) Describes tu chacra y tus prioridades. 2) ChacraSat lee los datos climáticos NASA POWER de tu valle (temperatura, lluvia, radiación solar y humedad del suelo en la zona de raíces) y calcula la demanda mensual de agua con el método Hargreaves de la FAO-56. 3) Arma todas las secuencias posibles de 3 cultivos con 10 cultivos de la costa norte y puntúa cada una con cinco criterios transparentes: salud del suelo (leguminosas, abonos verdes, cambio de familia, raíces), agua de riego (coeficiente del cultivo × demanda NASA menos lluvia NASA), tolerancia a sales (umbrales FAO), resistencia a El Niño (calor y lluvia fuerte con el mayor calentamiento del registro NASA) e ingreso relativo. 4) Los puntajes se ponderan según tu prioridad y se muestran las 3 mejores junto a “seguir con el mismo cultivo”. Los valores de cultivos son indicativos y deben validarse con agrónomos locales.",
     src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parámetros T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derivados de productos NASA GMAO MERRA-2/GEOS y CERES), https://power.larc.nasa.gov · FAO Riego y Drenaje 56 (Allen et al., 1998) — coeficientes de cultivo y ETo Hargreaves · FAO Riego y Drenaje 29 (Ayers y Westcot, 1985) — tolerancia a sales · Los valores de referencia mostrados antes de cargar datos NASA son aproximados y no son datos NASA.",
   },
   en: {
@@ -112,7 +129,25 @@ export const translations = {
     nino: "El Niño stress test",
     ninosub:
       "Coastal El Niño events (like 2017 and 2023) bring heat and heavy rain to Trujillo. We replay NASA's monthly record to see how big those shocks were.",
-    howTitle: "How ChacraSat works",
+    howSectionTitle: "How does ChacraSat work?",
+    howSectionSubtitle:
+      "From your field profile to NASA POWER climate analysis, in four transparent stages for planning the next 18 months.",
+    howStepLabel: "Step",
+    howStep1Title: "Configure your field",
+    howStep1Desc:
+      "Select your valley in La Libertad, current or previous crop, soil texture and salinity, irrigation water, planting month, and priority.",
+    howStep2Title: "Analyze NASA climate & water",
+    howStep2Desc:
+      "Reads NASA POWER monthly temperature, rain, solar radiation, and root-zone wetness, computes ETo water demand, and checks El Niño history.",
+    howStep3Title: "Evaluate crop sequences",
+    howStep3Desc:
+      "Builds rotations from 10 northern-coast crops compatible with your soil and water, scoring five criteria weighted by your priority.",
+    howStep4Title: "Compare results & decide",
+    howStep4Desc:
+      "Displays the top 3 options with an 18-month timeline, score breakdown bars, and clear reasons compared against keeping your current crop.",
+    howDisclaimerLabel: "Decision support:",
+    howDisclaimerText:
+      "ChacraSat recommendations are based on transparent evaluation criteria and your selected inputs to support agricultural planning; they do not guarantee field yields or outcomes.",
     srcTitle: "Data & references",
     team_prefix: "Built during the hackathon by team ",
     team_name: "Trujillo Orbital",
@@ -142,7 +177,6 @@ export const translations = {
       "2010–2024 monthly history is unavailable for this valley; the stress test uses a +2 °C scenario.",
     rainSeries: "Monthly rain (mm)",
     tAnom: "Temperature anomaly (°C)",
-    how: "1) You describe your field and priorities. 2) ChacraSat reads NASA POWER satellite-based climate data for your valley (temperature, rain, solar radiation and root-zone soil wetness) and computes monthly crop water demand with the FAO-56 Hargreaves method. 3) It builds every possible 3-crop sequence from 10 crops grown on the northern coast and scores each one on five transparent criteria: soil health (legumes, cover crops, plant-family changes, roots), irrigation water need (crop coefficient × NASA-based demand minus NASA rain), salinity fit (FAO salt-tolerance thresholds), El Niño resilience (heat and heavy-rain exposure under the strongest warming seen in NASA's record) and relative income. 4) Scores are weighted by your priority, and the top 3 are shown next to “keep the same crop”. Crop values are indicative and should be validated with local agronomists.",
     src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parameters T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derived from NASA GMAO MERRA-2/GEOS and CERES satellite products), https://power.larc.nasa.gov · FAO Irrigation & Drainage Paper 56 (Allen et al., 1998) — crop coefficients and Hargreaves ETo · FAO Irrigation & Drainage Paper 29 (Ayers & Westcot, 1985) — salt tolerance · Reference values shown before loading NASA data are approximate and are not NASA data.",
   },
 } as const;
