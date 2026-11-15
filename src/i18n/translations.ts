@@ -40,14 +40,6 @@ export const translations = {
     nino: "Prueba de estrés El Niño",
     ninosub:
       "El Niño costero (como en 2017 y 2023) trae calor y lluvias fuertes a Trujillo. Repasamos el registro mensual de la NASA para medir esos golpes.",
-    load: "Datos NASA",
-    fetch: "Descargar datos NASA ahora",
-    openClim: "Abrir link de clima NASA POWER",
-    openMon: "Abrir link de historia mensual NASA POWER",
-    pasteHelp:
-      "Si la descarga automática está bloqueada, abre los links, copia todo el texto (o guárdalo como archivo) y pégalo o súbelo aquí:",
-    usePaste: "Usar datos pegados",
-    uploadJson: "Subir archivo JSON",
     howTitle: "Cómo funciona ChacraSat",
     srcTitle: "Datos y referencias",
     team_prefix: "Hecho durante el hackatón por el equipo ",
@@ -75,19 +67,9 @@ export const translations = {
     noOpt:
       "Ninguna rotación encaja con estas condiciones. Prueba otro suelo u otra opción de agua.",
     ninoNoData:
-      "Carga la historia mensual NASA (botón abajo) para repasar 2010–2024 y medir El Niño con datos reales. Mientras tanto, la prueba usa un escenario de +2 °C.",
+      "Historia mensual 2010–2024 no disponible para este valle; la prueba usa un escenario de +2 °C.",
     rainSeries: "Lluvia mensual (mm)",
     tAnom: "Anomalía de temperatura (°C)",
-    loadNone:
-      "Aún no hay datos NASA cargados. Pulsa “Descargar datos NASA ahora”. Si tu navegador lo bloquea, usa los links y pega el texto abajo.",
-    loadClimOk:
-      "Climatología NASA cargada (incluida, descargada el 15 nov 2026)",
-    loadMonOk: "Historia mensual NASA 2010–2024 cargada",
-    fetchFail:
-      "Aquí se bloqueó la descarga automática. Usa los links y pega el texto, o sube el archivo guardado.",
-    fetching: "Descargando de NASA POWER…",
-    pasteErr:
-      "Eso no parece JSON de NASA POWER. Copia todo el texto de la página e inténtalo de nuevo.",
     how: "1) Describes tu chacra y tus prioridades. 2) ChacraSat lee los datos climáticos NASA POWER de tu valle (temperatura, lluvia, radiación solar y humedad del suelo en la zona de raíces) y calcula la demanda mensual de agua con el método Hargreaves de la FAO-56. 3) Arma todas las secuencias posibles de 3 cultivos con 10 cultivos de la costa norte y puntúa cada una con cinco criterios transparentes: salud del suelo (leguminosas, abonos verdes, cambio de familia, raíces), agua de riego (coeficiente del cultivo × demanda NASA menos lluvia NASA), tolerancia a sales (umbrales FAO), resistencia a El Niño (calor y lluvia fuerte con el mayor calentamiento del registro NASA) e ingreso relativo. 4) Los puntajes se ponderan según tu prioridad y se muestran las 3 mejores junto a “seguir con el mismo cultivo”. Los valores de cultivos son indicativos y deben validarse con agrónomos locales.",
     src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parámetros T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derivados de productos NASA GMAO MERRA-2/GEOS y CERES), https://power.larc.nasa.gov · FAO Riego y Drenaje 56 (Allen et al., 1998) — coeficientes de cultivo y ETo Hargreaves · FAO Riego y Drenaje 29 (Ayers y Westcot, 1985) — tolerancia a sales · Los valores de referencia mostrados antes de cargar datos NASA son aproximados y no son datos NASA.",
   },
@@ -130,14 +112,6 @@ export const translations = {
     nino: "El Niño stress test",
     ninosub:
       "Coastal El Niño events (like 2017 and 2023) bring heat and heavy rain to Trujillo. We replay NASA's monthly record to see how big those shocks were.",
-    load: "NASA data",
-    fetch: "Download NASA data now",
-    openClim: "Open NASA POWER climate link",
-    openMon: "Open NASA POWER monthly history link",
-    pasteHelp:
-      "If automatic download is blocked, open the links above, copy all the text (or save it as a file) and paste or upload it here:",
-    usePaste: "Use pasted data",
-    uploadJson: "Upload JSON file",
     howTitle: "How ChacraSat works",
     srcTitle: "Data & references",
     team_prefix: "Built during the hackathon by team ",
@@ -165,19 +139,9 @@ export const translations = {
     noOpt:
       "No rotation fits these conditions. Try a different soil or water option.",
     ninoNoData:
-      "Load the NASA monthly history (button below) to replay 2010–2024 and measure El Niño shocks with real NASA data. Until then the stress test uses a +2 °C scenario.",
+      "2010–2024 monthly history is unavailable for this valley; the stress test uses a +2 °C scenario.",
     rainSeries: "Monthly rain (mm)",
     tAnom: "Temperature anomaly (°C)",
-    loadNone:
-      "No NASA data loaded yet. Click “Download NASA data now”. If your browser blocks it, use the links and paste the text below.",
-    loadClimOk:
-      "NASA climatology loaded (built in, retrieved Nov 15, 2026)",
-    loadMonOk: "NASA monthly history 2010–2024 loaded",
-    fetchFail:
-      "Automatic download was blocked here. Use the links above and paste the text, or upload the saved file.",
-    fetching: "Downloading from NASA POWER…",
-    pasteErr:
-      "That doesn't look like NASA POWER JSON. Copy the whole page text and try again.",
     how: "1) You describe your field and priorities. 2) ChacraSat reads NASA POWER satellite-based climate data for your valley (temperature, rain, solar radiation and root-zone soil wetness) and computes monthly crop water demand with the FAO-56 Hargreaves method. 3) It builds every possible 3-crop sequence from 10 crops grown on the northern coast and scores each one on five transparent criteria: soil health (legumes, cover crops, plant-family changes, roots), irrigation water need (crop coefficient × NASA-based demand minus NASA rain), salinity fit (FAO salt-tolerance thresholds), El Niño resilience (heat and heavy-rain exposure under the strongest warming seen in NASA's record) and relative income. 4) Scores are weighted by your priority, and the top 3 are shown next to “keep the same crop”. Crop values are indicative and should be validated with local agronomists.",
     src: "NASA POWER (Prediction Of Worldwide Energy Resources) API — parameters T2M, T2M_MAX, T2M_MIN, PRECTOTCORR, ALLSKY_SFC_SW_DWN, RH2M, GWETROOT (derived from NASA GMAO MERRA-2/GEOS and CERES satellite products), https://power.larc.nasa.gov · FAO Irrigation & Drainage Paper 56 (Allen et al., 1998) — crop coefficients and Hargreaves ETo · FAO Irrigation & Drainage Paper 29 (Ayers & Westcot, 1985) — salt tolerance · Reference values shown before loading NASA data are approximate and are not NASA data.",
   },
@@ -190,7 +154,7 @@ export const i18nFormatters = {
     s2subNasa: (v: string, c: string, e: string | number) =>
       `Climatología mensual NASA POWER para ${v} (${c}; celda NASA de ≈50 km, altura media ${e} m). La demanda de agua (ETo) se calcula con temperaturas NASA y la ecuación de Hargreaves (FAO-56).`,
     s2subRef: (v: string) =>
-      `Mostrando valores aproximados de referencia para ${v} hasta cargar los datos NASA (ver “Datos NASA” abajo).`,
+      `Mostrando valores aproximados de referencia para ${v}.`,
     climNote: (p: number) =>
       `Según los datos NASA, la lluvia cubre solo cerca del ${p}% de la demanda de agua anual: todo cultivo depende del riego, por eso el agua es lo más importante.`,
     why_legume: (c: string) =>
@@ -216,7 +180,7 @@ export const i18nFormatters = {
     s2subNasa: (v: string, c: string, e: string | number) =>
       `NASA POWER monthly climatology for ${v} (${c}; NASA grid cell ≈50 km, mean elevation ${e} m). Crop water demand (ETo) is computed from NASA temperatures with the FAO-56 Hargreaves equation.`,
     s2subRef: (v: string) =>
-      `Showing approximate reference values for ${v} until NASA data is loaded (see “NASA data” below).`,
+      `Showing approximate reference values for ${v}.`,
     climNote: (p: number) =>
       `According to NASA data, rain covers only about ${p}% of the yearly crop water demand here — every crop depends on irrigation, so water use matters most.`,
     why_legume: (c: string) =>

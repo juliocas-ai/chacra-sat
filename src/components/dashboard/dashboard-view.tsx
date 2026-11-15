@@ -16,13 +16,8 @@ import {
 import {
   AlertTriangle,
   ArrowRight,
-  CheckCircle2,
-  Download,
-  ExternalLink,
-  Satellite,
   Sprout,
   Star,
-  Upload,
   Waves,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -43,23 +38,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/context/language-context";
 import {
-  type ClimData,
   CROPS,
   type CropId,
   CURRENT_LIST,
   computeRotations,
   type FieldState,
-  findValleyByCoords,
   initEmbeddedStores,
   MONTHS,
-  type MonthlyData,
   PRIOS,
   type PrioId,
-  parsePower,
-  powerUrls,
   SALTS,
   type SaltId,
   SOILS,
@@ -86,13 +75,10 @@ ChartJS.register(
 export function DashboardView() {
   const { language, t, fmt, setIsNasaData } = useLanguage();
 
-  const initialStores = React.useMemo(() => initEmbeddedStores(), []);
-  const [climStore, setClimStore] = React.useState<Record<string, ClimData>>(
-    () => initialStores.clim
+  const { clim: climStore, monthly: monthlyStore } = React.useMemo(
+    () => initEmbeddedStores(),
+    []
   );
-  const [monthlyStore, setMonthlyStore] = React.useState<
-    Record<string, MonthlyData>
-  >(() => initialStores.monthly);
 
   const [field, setField] = React.useState<FieldState>({
     valley: "moche",
@@ -104,15 +90,6 @@ export function DashboardView() {
     prio: "soil",
   });
 
-  const [pasteText, setPasteText] = React.useState("");
-  const [loadMsg, setLoadMsg] = React.useState<{
-    text: string;
-    type: "" | "ok" | "err";
-    lang?: string;
-  }>({ text: "", type: "" });
-  const [isFetching, setIsFetching] = React.useState(false);
-
-  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const climCanvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const ninoCanvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const climChartRef = React.useRef<ChartJS | null>(null);
@@ -353,121 +330,6 @@ export function DashboardView() {
     };
   }, [R.nino, language, t]);
 
-  // Accept NASA POWER JSON
-  const acceptPowerJson = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (json: any, targetValley: ValleyId): "clim" | "monthly" => {
-      const parsed = parsePower(json);
-      const vid = findValleyByCoords(parsed.coords, targetValley);
-      if (parsed.kind === "clim") {
-        setClimStore((prev) => ({
-          ...prev,
-          [vid]: { ...parsed.data, coords: parsed.coords },
-        }));
-      } else {
-        setMonthlyStore((prev) => ({
-          ...prev,
-          [vid]: { rows: parsed.rows, coords: parsed.coords },
-        }));
-      }
-      return parsed.kind;
-    },
-    []
-  );
-
-  const handleFetchNasa = React.useCallback(
-    async (valleyOverride?: ValleyId) => {
-      const vid = valleyOverride || field.valley;
-      const v = VALLEYS.find((x) => x.id === vid) || VALLEYS[0];
-      const u = powerUrls(v);
-      setIsFetching(true);
-      setLoadMsg({ text: t("fetching"), type: "", lang: language });
-
-      const getJson = async (url: string) => {
-        const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), 12000);
-        try {
-          const res = await fetch(url, { signal: ctrl.signal });
-          if (!res.ok) throw new Error(String(res.status));
-          return await res.json();
-        } finally {
-          clearTimeout(timer);
-        }
-      };
-
-      let okCount = 0;
-      let gotClim = !!climStore[vid];
-      let gotMon = !!monthlyStore[vid];
-
-      try {
-        acceptPowerJson(await getJson(u.clim), vid);
-        okCount++;
-        gotClim = true;
-      } catch {
-        // Fallback to embedded/reference data seamlessly
-      }
-
-      try {
-        acceptPowerJson(await getJson(u.monthly), vid);
-        okCount++;
-        gotMon = true;
-      } catch {
-        // Fallback to embedded/reference data seamlessly
-      }
-
-      setIsFetching(false);
-      if (okCount === 0) {
-        setLoadMsg({ text: t("fetchFail"), type: "err", lang: language });
-      } else {
-        const parts: string[] = [];
-        if (gotClim) parts.push(`${t("loadClimOk")} ✓`);
-        if (gotMon) parts.push(`${t("loadMonOk")} ✓`);
-        setLoadMsg({ text: parts.join("  "), type: "ok", lang: language });
-      }
-    },
-    [field.valley, climStore, monthlyStore, t, language, acceptPowerJson]
-  );
-
-  const handleUsePaste = () => {
-    const txt = pasteText.trim();
-    if (!txt) return;
-    try {
-      const kind = acceptPowerJson(JSON.parse(txt), field.valley);
-      setLoadMsg({
-        text: `${kind === "clim" ? t("loadClimOk") : t("loadMonOk")} ✓`,
-        type: "ok",
-        lang: language,
-      });
-      setPasteText("");
-    } catch {
-      setLoadMsg({ text: t("pasteErr"), type: "err", lang: language });
-    }
-  };
-
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || !files.length) return;
-    const done: ("clim" | "monthly")[] = [];
-    for (const f of Array.from(files)) {
-      try {
-        const text = await f.text();
-        done.push(acceptPowerJson(JSON.parse(text), field.valley));
-      } catch {
-        setLoadMsg({ text: t("pasteErr"), type: "err", lang: language });
-      }
-    }
-    if (done.length) {
-      setLoadMsg({
-        text: `${done
-          .map((k) => (k === "clim" ? t("loadClimOk") : t("loadMonOk")))
-          .join(" ✓ · ")} ✓`,
-        type: "ok",
-        lang: language,
-      });
-    }
-    e.target.value = "";
-  };
-
   // Computed stats for Step 2
   const rainY = C.RAIN.reduce((s, x) => s + (x || 0), 0);
   const etoY = C.ETO.reduce((s, x) => s + x, 0);
@@ -488,14 +350,6 @@ export function DashboardView() {
     : fmt.s2subRef(currentValley[language]);
 
   const rainPct = Math.max(1, Math.round((100 * rainY) / Math.max(etoY, 1)));
-  const urls = powerUrls(currentValley);
-
-  const loadStatusParts: string[] = [];
-  if (climStore[field.valley]) loadStatusParts.push(`${t("loadClimOk")} ✓`);
-  if (monthlyStore[field.valley]) loadStatusParts.push(`${t("loadMonOk")} ✓`);
-  const loadStatusText = loadStatusParts.length
-    ? loadStatusParts.join(" · ")
-    : t("loadNone");
 
   // Legend crops used in top rotations
   const usedCrops = React.useMemo(() => {
@@ -535,11 +389,7 @@ export function DashboardView() {
                 value={field.valley}
                 onValueChange={(val) => {
                   if (!val) return;
-                  const vId = val as ValleyId;
-                  setField((f) => ({ ...f, valley: vId }));
-                  if (!climStore[vId]) {
-                    handleFetchNasa(vId);
-                  }
+                  setField((f) => ({ ...f, valley: val as ValleyId }));
                 }}
               >
                 <SelectTrigger
@@ -1130,113 +980,6 @@ export function DashboardView() {
                   )}
                 </p>
               </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* NASA DATA LOADER */}
-      <Card
-        id="loader"
-        className="mt-4 min-w-0 rounded-[14px] border-line bg-surface p-4 shadow-xs ring-0 sm:mt-[18px] sm:p-[18px]"
-      >
-        <CardHeader className="p-0">
-          <CardTitle className="flex items-center gap-2 font-heading text-lg font-bold text-ink">
-            <Satellite className="size-5 shrink-0 text-navy" />
-            <span>{t("load")}</span>
-          </CardTitle>
-          <CardDescription className="text-[13.5px] text-muted-foreground">
-            {loadStatusText}
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex min-w-0 flex-col gap-3 p-0">
-          <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
-            <Button
-              type="button"
-              disabled={isFetching}
-              onClick={() => handleFetchNasa()}
-              className="h-auto w-full rounded-[9px] bg-navy px-3.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-navy-light sm:w-auto"
-            >
-              <Download className="size-4" />
-              <span>{t("fetch")}</span>
-            </Button>
-
-            <a
-              href={urls.clim}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[12.5px] text-sky underline-offset-4 hover:underline"
-            >
-              <span>{t("openClim")}</span>
-              <ExternalLink className="size-3.5 shrink-0" />
-            </a>
-
-            <a
-              href={urls.monthly}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[12.5px] text-sky underline-offset-4 hover:underline"
-            >
-              <span>{t("openMon")}</span>
-              <ExternalLink className="size-3.5 shrink-0" />
-            </a>
-          </div>
-
-          <p className="text-[12.5px] text-muted-foreground">{t("pasteHelp")}</p>
-
-          <Textarea
-            value={pasteText}
-            onChange={(e) => setPasteText(e.target.value)}
-            placeholder='{"type":"Feature", ... "properties":{"parameter":{...}}}'
-            className="min-h-[88px] w-full rounded-[9px] border-line font-mono text-xs"
-          />
-
-          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleUsePaste}
-              className="h-auto w-full rounded-[9px] border-navy bg-white px-3.5 py-2 text-[13.5px] font-semibold text-navy hover:bg-muted sm:w-auto"
-            >
-              {t("usePaste")}
-            </Button>
-
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".json,application/json"
-              multiple
-              onChange={handleFileUpload}
-              className="hidden"
-            />
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => fileInputRef.current?.click()}
-              className="h-auto w-full rounded-[9px] border-line bg-white px-3.5 py-2 text-[13px] font-medium text-ink hover:bg-muted sm:w-auto"
-            >
-              <Upload className="size-4" />
-              <span>{t("uploadJson")}</span>
-            </Button>
-          </div>
-
-          {loadMsg.text && loadMsg.lang === language && (
-            <div
-              className={cn(
-                "flex items-center gap-1.5 text-[13px] font-medium",
-                loadMsg.type === "ok" && "text-leaf",
-                loadMsg.type === "err" && "text-danger",
-                loadMsg.type === "" && "text-muted-foreground"
-              )}
-            >
-              {loadMsg.type === "ok" && (
-                <CheckCircle2 className="size-4 shrink-0" />
-              )}
-              {loadMsg.type === "err" && (
-                <AlertTriangle className="size-4 shrink-0" />
-              )}
-              <span>{loadMsg.text}</span>
             </div>
           )}
         </CardContent>
