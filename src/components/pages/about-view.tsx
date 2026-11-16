@@ -25,20 +25,14 @@ import { cn } from "@/lib/utils";
 const TEAM_MEMBERS = [
   {
     name: "Flavia Villacorta",
-    roleEs: "Investigación Agroclimática y Diseño de Solución",
-    roleEn: "Agroclimatic Research & Solution Design",
     location: "Trujillo, La Libertad, Perú",
   },
   {
     name: "Yesica Castillo Olivares",
-    roleEs: "Análisis de Sistemas Agrícolas y Sostenibilidad",
-    roleEn: "Agricultural Systems & Sustainability Analysis",
     location: "Trujillo, La Libertad, Perú",
   },
   {
     name: "Julio Castillo",
-    roleEs: "Arquitectura de Software e Integración Satelital NASA",
-    roleEn: "Software Architecture & NASA Satellite Integration",
     location: "Trujillo, La Libertad, Perú",
   },
 ] as const;
@@ -186,9 +180,6 @@ export function AboutView() {
                 <h3 className="font-heading text-base font-bold text-ink">
                   {m.name}
                 </h3>
-                <p className="mt-1 text-[13px] leading-snug text-muted-foreground">
-                  {isEs ? m.roleEs : m.roleEn}
-                </p>
               </div>
               <span className="mt-3 block text-xs font-medium text-leaf">
                 {m.location}
