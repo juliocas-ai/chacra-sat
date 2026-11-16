@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { NotFoundContent } from "@/components/layout/not-found-content";
 
 export const metadata: Metadata = {
-  title: "404 — Página no encontrada · Page Not Found",
+  title: "404 — Page Not Found",
   description:
-    "La ruta solicitada no existe en ChacraSat. Regresa al inicio o abre el planificador interactivo de rotaciones.",
+    "The requested route does not exist in ChacraSat. Return home or open the interactive rotation planner.",
 };
 
 export default function NotFoundPage() {

@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "es_PE",
-    alternateLocale: ["en_US"],
+    locale: "en_US",
+    alternateLocale: ["es_PE"],
     siteName: SITE_META.name,
     title: SITE_META.shortTitle,
     description: SITE_META.description,
@@ -76,7 +76,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="es"
+      lang="en"
       data-scroll-behavior="smooth"
       className={cn(
         "h-full antialiased",

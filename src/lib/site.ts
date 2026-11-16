@@ -12,31 +12,30 @@ export function getSiteUrl(): URL {
 
 export const SITE_META = {
   name: "ChacraSat",
-  shortTitle: "ChacraSat — De la órbita a la chacra",
-  defaultTitle:
-    "ChacraSat — Planificación inteligente de rotaciones de cultivos",
+  shortTitle: "ChacraSat — From orbit to the chacra",
+  defaultTitle: "ChacraSat — Smart Crop Rotation Planning",
   description:
-    "Plataforma de apoyo agrícola con datos satelitales NASA POWER, método FAO-56 y prueba de estrés El Niño para planificar rotaciones de cultivos en la costa norte del Perú (La Libertad).",
+    "Agricultural decision-support platform powered by NASA POWER satellite data, FAO-56 water demand, and El Niño stress testing for Peru's northern coast (La Libertad).",
   keywords: [
     "ChacraSat",
     "NASA Space Apps Challenge",
     "NASA POWER",
-    "rotación de cultivos",
-    "agricultura de precisión",
-    "costa norte del Perú",
+    "crop rotation",
+    "precision agriculture",
+    "northern Peru coast",
     "La Libertad",
     "Trujillo",
     "FAO-56",
     "El Niño",
-    "crop rotation",
+    "rotación de cultivos",
     "Peru",
   ],
   authors: [
-    { name: "Equipo Trujillo Orbital" },
+    { name: "Team Trujillo Orbital" },
     { name: "Flavia Villacorta" },
     { name: "Yesica Castillo Olivares" },
     { name: "Julio Castillo" },
   ],
-  creator: "Equipo Trujillo Orbital",
-  publisher: "Equipo Trujillo Orbital — NASA Space Apps Challenge 2026",
+  creator: "Team Trujillo Orbital",
+  publisher: "Team Trujillo Orbital — NASA Space Apps Challenge 2026",
 } as const;

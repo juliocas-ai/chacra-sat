@@ -96,6 +96,10 @@ export const translations = {
     loadMonOk: "Historia mensual NASA 2010–2024 cargada",
     loadNone:
       "Usando valores de referencia. Abre los enlaces para consultar el registro NASA POWER.",
+    loadSourceLive: "Sincronizado en vivo con NASA POWER (≤ 2 s)",
+    loadSourceCache: "Usando caché local reciente (fallback automático activo)",
+    loadSourcePrecalc:
+      "Usando datos NASA POWER precalculados en caché local para los 5 valles",
     openClim: "Ver datos crudos de clima NASA POWER ↗",
     openMon: "Ver registro mensual crudo NASA POWER ↗",
 
@@ -260,6 +264,10 @@ export const translations = {
     loadMonOk: "NASA monthly history 2010–2024 loaded",
     loadNone:
       "Showing reference values. Open the links to inspect raw NASA POWER records.",
+    loadSourceLive: "Live-synced with NASA POWER (≤ 2 s)",
+    loadSourceCache: "Using recent local cache (automatic fallback active)",
+    loadSourcePrecalc:
+      "Using precalculated NASA POWER local cache for all 5 valleys",
     openClim: "View raw NASA POWER climate data ↗",
     openMon: "View raw NASA POWER monthly record ↗",
 

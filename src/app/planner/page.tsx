@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PlannerClientPage } from "@/components/dashboard/planner-client-page";
 
 export const metadata: Metadata = {
-  title: "Planificador de Rotaciones · Interactive Planner",
+  title: "Interactive Rotation Planner",
   description:
-    "Simulador interactivo de rotaciones de cultivos a 18 meses con datos reales NASA POWER, demanda hídrica FAO-56 y prueba de estrés El Niño para La Libertad, Perú.",
+    "Interactive 18-month crop rotation simulator powered by real NASA POWER data, FAO-56 water demand, and El Niño stress testing for La Libertad, Peru.",
   alternates: {
     canonical: "/planner",
   },

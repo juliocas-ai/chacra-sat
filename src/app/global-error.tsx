@@ -7,7 +7,7 @@ export default function GlobalError({
   retry: () => void;
 }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body
         style={{
           margin: 0,
@@ -33,7 +33,7 @@ export default function GlobalError({
           }}
         >
           <h1 style={{ margin: "0 0 8px", fontSize: "22px", color: "#0b1d3a" }}>
-            ChacraSat — Error del sistema
+            ChacraSat — System Error
           </h1>
           <p
             style={{
@@ -43,8 +43,8 @@ export default function GlobalError({
               lineHeight: 1.5,
             }}
           >
-            Ocurrió un error inesperado al cargar la aplicación. / An unexpected
-            error occurred while loading the application.
+            An unexpected error occurred while loading the application. / Ocurrió
+            un error inesperado al cargar la aplicación.
           </p>
           <button
             type="button"
@@ -60,7 +60,7 @@ export default function GlobalError({
               cursor: "pointer",
             }}
           >
-            Intentar de nuevo / Try again
+            Try again / Intentar de nuevo
           </button>
         </div>
       </body>

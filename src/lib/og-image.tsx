@@ -13,7 +13,7 @@ export const SOCIAL_IMAGE_SIZE = {
 } as const;
 
 export const SOCIAL_IMAGE_ALT =
-  "ChacraSat — De la órbita a la chacra: rotaciones de cultivos con datos NASA POWER";
+  "ChacraSat — From orbit to the chacra: crop rotations powered by NASA POWER data";
 
 export async function renderSocialCardImage() {
   const iconDataUri = await getIconDataUri();
@@ -97,8 +97,8 @@ export async function renderSocialCardImage() {
               color: "#ffffff",
             }}
           >
-            De la órbita a la chacra: rotaciones inteligentes para la costa
-            norte del Perú
+            From orbit to the chacra: smart crop rotations for Peru&apos;s
+            northern coast
           </div>
           <div
             style={{
@@ -107,8 +107,8 @@ export async function renderSocialCardImage() {
               color: "#c9d8ef",
             }}
           >
-            Indicadores satelitales NASA POWER, demanda hídrica ETo y prueba de
-            estrés El Niño para Moche, Virú, Chao y Chicama.
+            NASA POWER satellite indicators, ETo water demand, and El Niño
+            stress testing for Moche, Virú, Chao, and Chicama.
           </div>
         </div>
 
@@ -123,8 +123,8 @@ export async function renderSocialCardImage() {
             color: "#c9d8ef",
           }}
         >
-          <span>Equipo Trujillo Orbital · La Libertad, Perú</span>
-          <span style={{ color: "#ffd166" }}>ES / EN · Datos abiertos NASA</span>
+          <span>Team Trujillo Orbital · La Libertad, Peru</span>
+          <span style={{ color: "#ffd166" }}>EN / ES · NASA Open Data</span>
         </div>
       </div>
     ),

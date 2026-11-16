@@ -12,7 +12,7 @@ interface LanguageContextValue {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: TranslationKey) => string;
-  fmt: (typeof i18nFormatters)["es"];
+  fmt: (typeof i18nFormatters)[Language];
   isNasaData: boolean;
   setIsNasaData: (val: boolean) => void;
 }
@@ -22,7 +22,7 @@ const LanguageContext = React.createContext<LanguageContextValue | undefined>(
 );
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = React.useState<Language>("es");
+  const [language, setLanguageState] = React.useState<Language>("en");
   const [isNasaData, setIsNasaData] = React.useState<boolean>(true);
 
   const setLanguage = React.useCallback((lang: Language) => {

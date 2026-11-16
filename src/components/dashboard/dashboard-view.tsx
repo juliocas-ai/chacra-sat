@@ -61,6 +61,10 @@ import {
   WATERS,
   type WaterId,
 } from "@/lib/chacra-data";
+import {
+  fetchValleyPowerWithFallback,
+  type ValleyDataSource,
+} from "@/lib/nasa-power-cache";
 import { cn } from "@/lib/utils";
 
 ChartJS.register(
@@ -102,10 +106,12 @@ export function DashboardView({
 }) {
   const { language, t, fmt, setIsNasaData } = useLanguage();
 
-  const { clim: climStore, monthly: monthlyStore } = React.useMemo(
-    () => initEmbeddedStores(),
-    []
-  );
+  const [stores, setStores] = React.useState(() => initEmbeddedStores());
+  const [valleySource, setValleySource] =
+    React.useState<ValleyDataSource>("precalculated");
+
+  const climStore = stores.clim;
+  const monthlyStore = stores.monthly;
 
   const [field, setField] = React.useState<FieldState>({
     valley: initialValley,
@@ -116,6 +122,25 @@ export function DashboardView({
     start: 11,
     prio: "soil",
   });
+
+  // Non-blocking NASA POWER sync with <= 2s timeout and automatic fallback to 5-valley local cache
+  React.useEffect(() => {
+    const controller = new AbortController();
+    fetchValleyPowerWithFallback(field.valley, {
+      signal: controller.signal,
+    }).then((res) => {
+      if (controller.signal.aborted) return;
+      setValleySource(res.source);
+      if (res.source !== "precalculated") {
+        setStores((prev) => ({
+          clim: { ...prev.clim, [field.valley]: res.clim },
+          monthly: { ...prev.monthly, [field.valley]: res.monthly },
+        }));
+      }
+    });
+
+    return () => controller.abort();
+  }, [field.valley]);
 
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -156,11 +181,17 @@ export function DashboardView({
   );
 
   const loadStatusText = React.useMemo(() => {
-    const parts: string[] = [];
+    const sourceLabel =
+      valleySource === "live"
+        ? t("loadSourceLive")
+        : valleySource === "cache"
+          ? t("loadSourceCache")
+          : t("loadSourcePrecalc");
+    const parts: string[] = [sourceLabel];
     if (climStore[field.valley]) parts.push(`${t("loadClimOk")} ✓`);
     if (monthlyStore[field.valley]) parts.push(`${t("loadMonOk")} ✓`);
-    return parts.length ? parts.join(" · ") : t("loadNone");
-  }, [climStore, monthlyStore, field.valley, t]);
+    return parts.join(" · ");
+  }, [climStore, monthlyStore, field.valley, valleySource, t]);
 
   const cname = React.useCallback(
     (id: CropId) => CROPS[id][language],

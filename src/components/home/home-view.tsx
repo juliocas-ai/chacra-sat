@@ -32,11 +32,13 @@ import {
   initEmbeddedStores,
   VALLEYS,
 } from "@/lib/chacra-data";
+import { fetchValleyPowerWithFallback } from "@/lib/nasa-power-cache";
 import { cn } from "@/lib/utils";
 
 export function HomeView() {
   const { language, t, fmt } = useLanguage();
   const router = useRouter();
+  const [stores, setStores] = React.useState(() => initEmbeddedStores());
 
   // Support #planner hash from original prototype bookmarks
   React.useEffect(() => {
@@ -45,11 +47,26 @@ export function HomeView() {
     }
   }, [router]);
 
+  // Non-blocking background sync with <= 2s timeout and automatic fallback to local cache
+  React.useEffect(() => {
+    const controller = new AbortController();
+    fetchValleyPowerWithFallback("moche", { signal: controller.signal }).then(
+      (res) => {
+        if (controller.signal.aborted || res.source === "precalculated") return;
+        setStores((prev) => ({
+          clim: { ...prev.clim, moche: res.clim },
+          monthly: { ...prev.monthly, moche: res.monthly },
+        }));
+      }
+    );
+
+    return () => controller.abort();
+  }, []);
+
   // Compute real NASA POWER metrics for Trujillo (Moche Valley)
   const trujilloStats = React.useMemo(() => {
-    const { clim, monthly } = initEmbeddedStores();
-    const C = computeClimate("moche", clim);
-    const nino = computeNinoDelta("moche", monthly);
+    const C = computeClimate("moche", stores.clim);
+    const nino = computeNinoDelta("moche", stores.monthly);
 
     const rainY = C.RAIN.reduce((s, x) => s + (x || 0), 0);
     const etoY = C.ETO.reduce((s, x) => s + x, 0);
@@ -61,7 +78,7 @@ export function HomeView() {
       normalMarRain: nino.real && nino.marN != null ? Math.round(nino.marN) : 21,
       maxWarming: `+${nino.d} °C`,
     };
-  }, []);
+  }, [stores]);
 
   const howSteps = [
     {
