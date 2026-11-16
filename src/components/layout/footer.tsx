@@ -195,6 +195,10 @@ export function Footer() {
           <p>{t("hFoot")}</p>
           <p className="font-medium text-navy/80">La Libertad, Perú · Open Agroclimatic Data</p>
         </div>
+
+        <p className="mt-3 rounded-lg border border-line bg-[#f8fafc] px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+          {t("footerNonEndorsement")}
+        </p>
       </div>
     </footer>
   );

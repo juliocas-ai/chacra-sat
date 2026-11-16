@@ -13,7 +13,7 @@ export const SOCIAL_IMAGE_SIZE = {
 } as const;
 
 export const SOCIAL_IMAGE_ALT =
-  "ChacraSat — From orbit to the chacra: crop rotations powered by NASA POWER data";
+  "ChacraSat — Smart Crop Rotation Planning powered by NASA POWER satellite data for Peru's northern coast";
 
 export async function renderSocialCardImage() {
   const iconDataUri = await getIconDataUri();
@@ -97,8 +97,8 @@ export async function renderSocialCardImage() {
               color: "#ffffff",
             }}
           >
-            From orbit to the chacra: smart crop rotations for Peru&apos;s
-            northern coast
+            From orbit to farm: smart crop rotations for Peru&apos;s northern
+            coast
           </div>
           <div
             style={{

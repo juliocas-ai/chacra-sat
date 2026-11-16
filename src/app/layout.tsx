@@ -4,7 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { LanguageProvider } from "@/context/language-context";
-import { getSiteUrl, SITE_META } from "@/lib/site";
+import { getSiteUrl, SHARED_OPEN_GRAPH, SITE_META } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -36,10 +36,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    alternateLocale: ["es_PE"],
-    siteName: SITE_META.name,
+    ...SHARED_OPEN_GRAPH,
     title: SITE_META.shortTitle,
     description: SITE_META.description,
     url: "/",
