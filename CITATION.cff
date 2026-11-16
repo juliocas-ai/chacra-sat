@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use ChacraSat in your research or agronomic planning, please cite it as below."
+title: "ChacraSat: From orbit to the chacra — smarter crop-rotations for Peru's northern coast"
+version: 1.0.0
+date-released: 2026-11-15
+url: "https://chacra-sat.vercel.app"
+repository-code: "https://github.com/owixp/chacra-sat"
+license: Apache-2.0
+authors:
+  - family-names: "Villacorta"
+    given-names: "Flavia"
+  - family-names: "Castillo Olivares"
+    given-names: "Yesica"
+  - family-names: "Castillo"
+    given-names: "Julio"
