@@ -1,11 +1,13 @@
 "use client";
 
-import { ArrowUpRight, MapPin, Sprout } from "lucide-react";
+import { ArrowUpRight, Code2, MapPin, Sprout } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/context/language-context";
 import { VALLEYS } from "@/lib/chacra-data";
+
+export const GITHUB_REPO_URL = "https://github.com/owixp/chacra-sat";
 
 const EXTERNAL_SOURCES = [
   {
@@ -23,6 +25,10 @@ const EXTERNAL_SOURCES = [
   {
     label: "FAO Paper 29 — Water Quality & Salt Tolerance",
     href: "https://www.fao.org/4/t0234e/t0234e00.htm",
+  },
+  {
+    label: "GitHub Repository (Licensed under Apache 2.0)",
+    href: GITHUB_REPO_URL,
   },
 ] as const;
 
@@ -193,7 +199,24 @@ export function Footer() {
 
         <div className="flex flex-col items-start justify-between gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center">
           <p>{t("hFoot")}</p>
-          <p className="font-medium text-navy/80">La Libertad, Perú · Open Agroclimatic Data</p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <a
+              href={GITHUB_REPO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-semibold text-navy underline-offset-4 transition-colors hover:text-leaf hover:underline"
+            >
+              <Code2 className="size-3.5 shrink-0 text-leaf" />
+              <span>{t("footerGithubLicense")}</span>
+              <ArrowUpRight className="size-3.5 shrink-0 text-sky" />
+            </a>
+            <span aria-hidden="true" className="hidden text-line sm:inline">
+              ·
+            </span>
+            <p className="font-medium text-navy/80">
+              La Libertad, Perú · Open Agroclimatic Data
+            </p>
+          </div>
         </div>
 
         <p className="mt-3 rounded-lg border border-line bg-[#f8fafc] px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">

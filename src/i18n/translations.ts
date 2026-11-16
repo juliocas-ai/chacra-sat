@@ -128,6 +128,7 @@ export const translations = {
     footerNavTitle: "Explorar plataforma",
     footerValleysTitle: "Valles de La Libertad",
     footerSourcesTitle: "Fuentes científicas y APIs",
+    footerGithubLicense: "Repositorio público en GitHub · Licensed under Apache 2.0",
     footerNonEndorsement:
       "Aviso de no respaldo (Non-Endorsement): ChacraSat es un proyecto independiente desarrollado para el NASA Space Apps Challenge con datos abiertos de NASA POWER. La NASA no respalda comercialmente este producto, servicio ni entidad.",
 
@@ -298,6 +299,7 @@ export const translations = {
     footerNavTitle: "Explore platform",
     footerValleysTitle: "La Libertad Valleys",
     footerSourcesTitle: "Scientific sources & APIs",
+    footerGithubLicense: "Public GitHub Repository · Licensed under Apache 2.0",
     footerNonEndorsement:
       "Non-endorsement disclaimer: ChacraSat is an independent project developed for the NASA Space Apps Challenge using open NASA POWER data. NASA does not commercially endorse this product, service, or entity.",
 
