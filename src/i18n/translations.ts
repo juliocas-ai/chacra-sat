@@ -24,6 +24,10 @@ export const translations = {
     navMethodology: "Metodología",
     navAbout: "Proyecto",
     quickActionPlanner: "Abrir planificador",
+    githubRepoLabel: "GitHub",
+    githubRepoAria:
+      "Abrir el repositorio público de ChacraSat en GitHub (nueva pestaña)",
+    githubRepoMobile: "Repositorio en GitHub",
 
     // Home Landing UI (from index22.html & MD spec)
     hKicker: "NASA Space Apps Challenge 2026 · Field Shift",
@@ -195,6 +199,10 @@ export const translations = {
     navMethodology: "Methodology",
     navAbout: "About",
     quickActionPlanner: "Open planner",
+    githubRepoLabel: "GitHub",
+    githubRepoAria:
+      "Open ChacraSat public repository on GitHub (opens in new tab)",
+    githubRepoMobile: "GitHub Repository",
 
     // Home Landing UI (from index22.html & MD spec)
     hKicker: "NASA Space Apps Challenge 2026 · Field Shift",

@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/context/language-context";
 import { VALLEYS } from "@/lib/chacra-data";
 
-export const GITHUB_REPO_URL = "https://github.com/owixp/chacra-sat";
+export const GITHUB_REPO_URL = "https://github.com/juliocas-ai/chacra-sat";
 
 const EXTERNAL_SOURCES = [
   {
