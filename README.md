@@ -161,7 +161,7 @@ chacra-sat/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/owixp/chacra-sat.git
+   git clone https://github.com/juliocas-ai/chacra-sat.git
    cd chacra-sat
    ```
 

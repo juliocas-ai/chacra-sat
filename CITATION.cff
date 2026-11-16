@@ -4,7 +4,7 @@ title: "ChacraSat: From orbit to the chacra — smarter crop-rotations for Peru'
 version: 1.0.0
 date-released: 2026-11-15
 url: "https://chacra-sat.vercel.app"
-repository-code: "https://github.com/owixp/chacra-sat"
+repository-code: "https://github.com/juliocas-ai/chacra-sat"
 license: Apache-2.0
 authors:
   - family-names: "Villacorta"
